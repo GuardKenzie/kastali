@@ -1,0 +1,31 @@
+# /home/mononoke/5bwm/wm &
+
+xrdb ~/.Xresources
+
+polybar bar &
+
+xset +fp ~/.fonts/
+
+export GTK_IM_MODULE='uim'
+export QT_IM_MODULE='uim'
+uim-xim &
+export XMODIFIERS='@im=uim'
+
+#compton --config /home/mononoke/.compton.conf -b
+unclutter -root -idle 3 &
+# xsetroot -solid "#008080"
+xset +fp /usr/share/fonts/local
+xset +fp /usr/share/fonts/artwiz-fonts
+xset fp rehash
+
+
+/usr/lib/notification-daemon-1.0/notification-daemon &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+nm-applet &
+feh --bg-fill ~/.dotfiles/bg.jpg
+
+sleep 10 && amixer -c 0 sset "Auto-Mute Mode" Enabled &
+
+wmname compiz
+
+mpd
