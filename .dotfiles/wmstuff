@@ -26,6 +26,4 @@ feh --bg-fill ~/.dotfiles/bg.jpg
 
 sleep 10 && amixer -c 0 sset "Auto-Mute Mode" Enabled &
 
-wmname compiz
-
 mpd

@@ -17,6 +17,9 @@ playlist_display_mode = "classic"
 song_list_format = "{{%a - %t}|{%f}}{$R%l}"
 now_playing_prefix = "$b$5"
 now_playing_suffix = "$/b$9"
+current_item_prefix = "$7$b$r"
+current_item_suffix = "$9$/b$/r"
+
 
 [statusbar]
 progressbar_look = "-> "
