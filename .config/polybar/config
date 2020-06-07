@@ -23,9 +23,9 @@ font-0 = "FantasqueSans Mono:size=13;1"
 
 wm-restack = bspwm
 
-modules-left = mpd
+modules-left = wm mpd
 modules-center = date
-modules-right = volume battery eth
+modules-right = pulseaudio xbacklight battery eth
 module-margin = 2
 
 ;left - center - right - none
@@ -94,6 +94,18 @@ wm-name = bar
 [module/wm]
 type= internal/bspwm
 
+label-empty = 
+
+label-focused = " %name% "
+label-focused-background = ${colors.nord9}
+label-focused-foreground = ${colors.nord0}
+
+label-occupied = " %name% "
+label-occupied-background = ${colors.nord2}
+
+label-urgent-background = ${colors.nord11}
+label-urgent-foreground = ${colors.nord0}
+
 [module/mpd]
 type = internal/mpd
 
@@ -117,6 +129,23 @@ bar-progress-indicator = |
 bar-progress-fill = -
 bar-progress-empty = .
 
+[module/xbacklight]
+type = internal/xbacklight
+
+enable-scroll = true
+
+format = <label> <bar>
+
+label = " B "
+
+label-background = ${colors.nord15}
+label-foreground = ${colors.nord0}
+
+bar-width = 10
+bar-indicator = ╋
+bar-fill = ━
+bar-empty = ━
+
 [module/battery]
 type = internal/battery
 
@@ -134,20 +163,21 @@ ramp-capacity-background= ${colors.nord14}
 
 ramp-capacity-0-background = ${colors.nord11}
 ramp-capacity-1-background = ${colors.nord12}
+ramp-capacity-3-background = ${colors.nord13}
 
 label-full-foreground = ${colors.nord0}
 label-full-background = ${colors.nord14}
 
-ramp-capacity-0 = " B "
-ramp-capacity-1 = " B "
-ramp-capacity-2 = " B "
-ramp-capacity-3 = " B "
-ramp-capacity-4 = " B "
-ramp-capacity-5 = " B "
-ramp-capacity-6 = " B "
-ramp-capacity-7 = " B "
-ramp-capacity-8 = " B "
-ramp-capacity-9 = " B "
+ramp-capacity-0 = " C "
+ramp-capacity-1 = " C "
+ramp-capacity-2 = " C "
+ramp-capacity-3 = " C "
+ramp-capacity-4 = " C "
+ramp-capacity-5 = " C "
+ramp-capacity-6 = " C "
+ramp-capacity-7 = " C "
+ramp-capacity-8 = " C "
+ramp-capacity-9 = " C "
 
 ; ramp-capacity-0 = 
 ; ramp-capacity-1 = 
@@ -180,8 +210,8 @@ format-padding = 1
 label-background=${colors.nord9}
 label-foreground=${colors.nord0}
 
-[module/volume]
-type = internal/alsa
+[module/pulseaudio]
+type = internal/pulseaudio
 label-active-font = 2
 format-volume = <ramp-volume> <label-volume>
 format-muted =  <label-muted> Muted
@@ -227,7 +257,7 @@ format-connected-prefix = " "
 ; ramp-signal-2 = 
 ramp-signal-0 = " N "
 ramp-signal-foreground = ${colors.nord0}
-ramp-signal-background = ${colors.nord15}
+ramp-signal-background = ${colors.nord14}
 
 format-connected-prefix-foreground = #b6a49b
 label-connected = %{A1:networkmanager_dmenu:} %essid% %downspeed:9%%{A}
@@ -239,5 +269,3 @@ label-disconnected = %{A1:networkmanager_dmenu:} N %{A}
 label-disconnected-foreground = ${colors.back}
 label-disconnected-background = ${colors.red}
 format-padding = 1
-
-
