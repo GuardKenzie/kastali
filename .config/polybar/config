@@ -11,13 +11,14 @@ radius                   = 0
 line-size                = 0
 bottom                   = false
 border-bottom-size       = 0
-padding-left             = 5
-padding-right            = 5
+padding-left             = 3
+padding-right            = 3
 /* module-margin-left       = 1% */
 /* module-margin-right      = 1% */
 
 fixed-center = true
 font-1 = "Typicons:size=13;1"
+font-2 = "dripicons\-v2:style=v2:size=11;3"
 
 font-0 = "FantasqueSans Mono:size=13;1"
 
@@ -25,7 +26,7 @@ wm-restack = bspwm
 
 modules-left = wm mpd
 modules-center = date
-modules-right = pulseaudio xbacklight battery eth
+modules-right = pulseaudio xbacklight battery eth bluetooth 
 module-margin = 2
 
 ;left - center - right - none
@@ -116,10 +117,13 @@ format-paused = <toggle> <label-song> <label-time>
 format-playing = <toggle> <label-song> <label-time>
 format-stopped = 
 
+icon-pause-font = 2
+icon-play-font = 2
+
 icon-pause = "  "
 icon-play = "  "
-
-icon-pause-font = 2
+; icon-pause = "  "
+; icon-play = "  "
 
 icon-pause-background = ${colors.nord1}
 icon-play-background = ${colors.nord1}
@@ -134,12 +138,14 @@ type = internal/xbacklight
 
 enable-scroll = true
 
-format = <label> <bar>
+format = <ramp> <label>
 
-label = " B "
+ramp-0 = " B "
 
-label-background = ${colors.nord15}
-label-foreground = ${colors.nord0}
+ramp-0-background = ${colors.nord15}
+ramp-0-foreground = ${colors.nord0}
+
+label = %percentage%%
 
 bar-width = 10
 bar-indicator = ╋
@@ -211,6 +217,7 @@ label-background=${colors.nord9}
 label-foreground=${colors.nord0}
 
 [module/pulseaudio]
+module-margin = 0
 type = internal/pulseaudio
 label-active-font = 2
 format-volume = <ramp-volume> <label-volume>
@@ -269,3 +276,19 @@ label-disconnected = %{A1:networkmanager_dmenu:} N %{A}
 label-disconnected-foreground = ${colors.back}
 label-disconnected-background = ${colors.red}
 format-padding = 1
+
+[module/bluetooth]
+format-label-margin = 0
+type = custom/script
+
+exec = $HOME/.dotfiles/bt
+
+tail = true
+interval = 2
+
+format = <label>
+
+label = %output%
+
+format-prefix-font=3
+format-prefix-background = ${colors.nord1}
