@@ -111,10 +111,10 @@ label-urgent-foreground = ${colors.nord0}
 type = internal/mpd
 
 label-song = %artist% - %title%
-format-online = <toggle> <label-song> <label-time>
+format-online = <toggle> %{A2:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
 
-format-paused = <toggle> <label-song> <label-time>
-format-playing = <toggle> <label-song> <label-time>
+format-paused = <toggle> %{A2:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-playing = <toggle> %{A2:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
 format-stopped = 
 
 icon-pause-font = 2
@@ -158,8 +158,8 @@ type = internal/battery
 battery = BAT0
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
+format-charging = %{A1:kitty -e gotop &:}<animation-charging> <label-charging>%{A}
+format-discharging = %{A1:kitty -e gotop &:}<ramp-capacity> <label-discharging>%{A}
 label-charging = +%percentage%%
 label-discharging = %percentage%%
 label-full = " Full "
@@ -169,7 +169,7 @@ ramp-capacity-background= ${colors.nord14}
 
 ramp-capacity-0-background = ${colors.nord11}
 ramp-capacity-1-background = ${colors.nord12}
-ramp-capacity-3-background = ${colors.nord13}
+ramp-capacity-2-background = ${colors.nord13}
 
 label-full-foreground = ${colors.nord0}
 label-full-background = ${colors.nord14}
@@ -288,7 +288,7 @@ interval = 2
 
 format = <label>
 
-label = %output%
+label = %{A3:kitty -e bluetoothctl &:}%output%%{A}
 
 format-prefix-font=3
 format-prefix-background = ${colors.nord1}
