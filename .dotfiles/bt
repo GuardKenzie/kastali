@@ -29,7 +29,7 @@ then
         then
             echo 1
         else
-            echo "%{A1:bluetoothctl power off:}%{F$nord0}%{B$nord14}$prefix%{B-}%{F-} $conn%{A}"
+            echo "%{A1:bluetoothctl power off:}%{F$nord0}%{B$nord14}$prefix%{B-}%{F-}  $conn%{A}"
         fi
     fi
 else

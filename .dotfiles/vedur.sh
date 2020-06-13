@@ -3,7 +3,7 @@
 stat=0
 count=0
 
-while [[ $stat == 0 && $count < 60 ]]
+while [[ $stat == 0 && $count -le 1800 ]]
 do
     vedur="$(curl -s wttr.in/?0?q?T  | awk '/°(C|F)/ {printf $(NF-1) $(NF) " ("a")"} /,/ {a=$1}' | sed 's/\.\./-/g' | sed 's/,//g')"
     if [[ $vedur == '' ]]
