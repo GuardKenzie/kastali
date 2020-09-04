@@ -145,3 +145,7 @@ alt + v
 # Move to monitor
 super + shift + {h,l}
         bspc node -m {prev,next}
+
+# Unmount everything
+super + u
+        udiskie-umount -a

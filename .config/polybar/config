@@ -104,6 +104,7 @@ label-focused-foreground = ${colors.nord0}
 label-occupied = " %name% "
 label-occupied-background = ${colors.nord2}
 
+label-urgent = " %name% "
 label-urgent-background = ${colors.nord11}
 label-urgent-foreground = ${colors.nord0}
 
@@ -140,7 +141,7 @@ enable-scroll = true
 
 format = <ramp> <label>
 
-ramp-0 = " B "
+ramp-0 = " L "
 
 ramp-0-background = ${colors.nord15}
 ramp-0-foreground = ${colors.nord0}
@@ -174,16 +175,16 @@ ramp-capacity-2-background = ${colors.nord13}
 label-full-foreground = ${colors.nord0}
 label-full-background = ${colors.nord14}
 
-ramp-capacity-0 = " C "
-ramp-capacity-1 = " C "
-ramp-capacity-2 = " C "
-ramp-capacity-3 = " C "
-ramp-capacity-4 = " C "
-ramp-capacity-5 = " C "
-ramp-capacity-6 = " C "
-ramp-capacity-7 = " C "
-ramp-capacity-8 = " C "
-ramp-capacity-9 = " C "
+ramp-capacity-0 = " B "
+ramp-capacity-1 = " B "
+ramp-capacity-2 = " B "
+ramp-capacity-3 = " B "
+ramp-capacity-4 = " B "
+ramp-capacity-5 = " B "
+ramp-capacity-6 = " B "
+ramp-capacity-7 = " B "
+ramp-capacity-8 = " B "
+ramp-capacity-9 = " B "
 
 ; ramp-capacity-0 = 
 ; ramp-capacity-1 = 
@@ -194,10 +195,10 @@ ramp-capacity-9 = " C "
 ; animation-charging-1 = 
 ; animation-charging-2 = 
 
-animation-charging-0 = " C    "
-animation-charging-1 = " C.   "
-animation-charging-2 = " C..  "
-animation-charging-3 = " C... "
+animation-charging-0 = " B    "
+animation-charging-1 = " B.   "
+animation-charging-2 = " B..  "
+animation-charging-3 = " B... "
 
 animation-charging-foreground = ${colors.nord0}
 animation-charging-background = ${colors.nord13}

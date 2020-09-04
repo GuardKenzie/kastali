@@ -2,6 +2,8 @@
 
 xrdb ~/.Xresources
 
+~/.dotfiles/vedur.sh &
+
 polybar bar &
 
 xset +fp ~/.fonts/
@@ -23,6 +25,7 @@ xset fp rehash
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 nm-applet &
 feh --bg-fill ~/.dotfiles/bg.jpg
+udiskie &
 
 sleep 10 && amixer -c 0 sset "Auto-Mute Mode" Enabled &
 
