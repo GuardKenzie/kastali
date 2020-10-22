@@ -112,10 +112,10 @@ label-urgent-foreground = ${colors.nord0}
 type = internal/mpd
 
 label-song = %artist% - %title%
-format-online = <toggle> %{A2:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-online = <toggle> %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
 
-format-paused = <toggle> %{A2:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
-format-playing = <toggle> %{A2:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-paused = <toggle> %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-playing = <toggle> %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
 format-stopped = 
 
 icon-pause-font = 2
