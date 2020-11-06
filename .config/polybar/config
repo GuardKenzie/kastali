@@ -2,13 +2,15 @@
 include-file = ~/.dotfiles/scheme
 
 [bar/bar]
-background = ${colors.nord0}
+/* background = ${colors.nord0} */
+/* foreground = ${colors.nord4} */
+background = #60000000
 foreground = ${colors.nord4}
 
-width                    = 1910
+width                    = 1920
 height                   = 35
 radius                   = 0
-line-size                = 0
+line-size                = 1
 bottom                   = false
 border-bottom-size       = 0
 padding-left             = 3
@@ -20,7 +22,11 @@ fixed-center = true
 font-1 = "Typicons:size=13;1"
 font-2 = "dripicons\-v2:style=v2:size=11;3"
 
-font-0 = "FantasqueSans Mono:size=13;1"
+/* font-0 = "Fantasque Sans Mono:style=Regular:size=13;1" */
+/* font-3 = "Fantasque Sans Mono:style=Bold:size=13;1" */
+font-0 = "Jetbrains Mono:style=Regular:size=11;2"
+font-3 = "Jetbrains Mono:style=Bold:size=11;2"
+font-4 = "SauceCodePro Nerd Font Mono:style=Regular:size=13;2"
 
 wm-restack = bspwm
 
@@ -38,53 +44,10 @@ tray-scale = 0.0
 tray-background = #3d3c3b
 
 
-override-redirect = true
-offset-x = 5
-offset-y = 5
-
-padding = 0
-
-wm-name = bar
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-[bar/bar-short]
-# background = #3d3c3b
-# background = #222120
-# background = #272625
-# foreground = #b6a49b
-background = ${colors.back}
-foreground = ${colors.fore}
-width                    = 100%:-10
-height                   = 32
-bottom                   = false
-padding-left             = 5
-padding-right            = 5
-
-fixed-center = true
-font-0 = "Gohu GohuFont:size=14;1"
-font-1 = "Wuncon Siji:size=14;0""
-font-2 = ":size=14;0""
-
-wm-restack = bspwm
-
-modules-left = mpd
-modules-center = date
-modules-right = volume battery eth
-module-margin = 2
-
-;left - center - right - none
-tray-position = none
-tray-maxsize = 0
-tray-detached = true
-tray-padding = 0
-tray-scale = 0.0
-tray-background = #3d3c3b
-
 
 override-redirect = true
-offset-x = 5
-offset-y = 5
+offset-x = 0
+offset-y = 0
 
 padding = 0
 
@@ -98,15 +61,14 @@ type= internal/bspwm
 label-empty = 
 
 label-focused = " %name% "
-label-focused-background = ${colors.nord9}
-label-focused-foreground = ${colors.nord0}
+label-focused-underline = ${colors.nord4}
 
 label-occupied = " %name% "
-label-occupied-background = ${colors.nord2}
 
 label-urgent = " %name% "
-label-urgent-background = ${colors.nord11}
-label-urgent-foreground = ${colors.nord0}
+label-urgent-foreground = ${colors.nord11}
+label-urgent-underline = ${colors.nord11}
+label-urgent-font = 4
 
 [module/mpd]
 type = internal/mpd
@@ -114,25 +76,19 @@ type = internal/mpd
 label-song = %artist% - %title%
 format-online = <toggle> %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
 
-format-paused = <toggle> %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
-format-playing = <toggle> %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-paused = <toggle> | %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-playing = <toggle> | %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
 format-stopped = 
 
-icon-pause-font = 2
-icon-play-font = 2
+icon-pause-font = 5
+icon-play-font = 5
 
-icon-pause = "  "
-icon-play = "  "
+;icon-pause = "  "
+;icon-play = "  "
+icon-pause = ""
+icon-play = ""
 ; icon-pause = "  "
 ; icon-play = "  "
-
-icon-pause-background = ${colors.nord1}
-icon-play-background = ${colors.nord1}
-
-bar-progress-width = 20
-bar-progress-indicator = |
-bar-progress-fill = -
-bar-progress-empty = .
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -141,10 +97,10 @@ enable-scroll = true
 
 format = <ramp> <label>
 
+ramp-font = 4
 ramp-0 = " L "
 
-ramp-0-background = ${colors.nord15}
-ramp-0-foreground = ${colors.nord0}
+ramp-0-foreground = ${colors.nord15}
 
 label = %percentage%%
 
@@ -165,15 +121,15 @@ label-charging = +%percentage%%
 label-discharging = %percentage%%
 label-full = " Full "
 
-ramp-capacity-foreground = ${colors.nord0}
-ramp-capacity-background= ${colors.nord14}
+ramp-capacity-foreground = ${colors.nord14}
 
-ramp-capacity-0-background = ${colors.nord11}
-ramp-capacity-1-background = ${colors.nord12}
-ramp-capacity-2-background = ${colors.nord13}
+ramp-capacity-0-foreground = ${colors.nord11}
+ramp-capacity-1-foreground = ${colors.nord12}
+ramp-capacity-2-foreground = ${colors.nord13}
 
-label-full-foreground = ${colors.nord0}
-label-full-background = ${colors.nord14}
+label-full-foreground = ${colors.nord14}
+
+ramp-capacity-font = 4
 
 ramp-capacity-0 = " B "
 ramp-capacity-1 = " B "
@@ -195,27 +151,27 @@ ramp-capacity-9 = " B "
 ; animation-charging-1 = 
 ; animation-charging-2 = 
 
+anumation-charging-font = 4
+
 animation-charging-0 = " B    "
 animation-charging-1 = " B.   "
 animation-charging-2 = " B..  "
 animation-charging-3 = " B... "
 
-animation-charging-foreground = ${colors.nord0}
-animation-charging-background = ${colors.nord13}
+animation-charging-foreground = ${colors.nord13}
 
-animation-charging-framerate = 1000
+animation-charging-framerate = 500
 
 [module/date]
 type = internal/date
 label-active-font = 2
-interval = 60
+interval = 5 
 date = %a %d %b
 time = %l:%M %p
-label = " %{A1:urxvt -geometry 20x10 -e sh -c "cal;read":}%{A3:urxvt -geometry 20x25 -e sh -c "cal -3;read":}%{A2:urxvt -geometry 66x35 -e sh -c "cal -y;read":}%date% %{A}%{A}%{A}  %time% "
+label = " %{A1:urxvt -geometry 20x10 -e sh -c "cal;read":}%{A3:urxvt -geometry 20x25 -e sh -c "cal -3;read":}%{A2:urxvt -geometry 66x35 -e sh -c "cal -y;read":}%date%%{A}%{A}%{A} - %time% "
 ;label =  %time%
 format-padding = 1
-label-background=${colors.nord9}
-label-foreground=${colors.nord0}
+label-foreground=${colors.nord4}
 
 [module/pulseaudio]
 module-margin = 0
@@ -226,15 +182,15 @@ format-muted =  <label-muted> Muted
 ; ramp-volume-0 = 
 ; ramp-volume-1 = 
 ; ramp-volume-2 = 
+
+ramp-volume-font = 4
+label-muted-font = 4
+
 ramp-volume-0 = " V "
 label-muted = " M "
 
-; ramp-volume-background = ${colors.yellow}
-ramp-volume-background = ${colors.nord13}
-label-muted-background = ${colors.nord11}
-
-ramp-volume-foreground = ${colors.nord0}
-label-muted-foreground = ${colors.nord0}
+ramp-volume-foreground = ${colors.nord13}
+label-muted-foreground = ${colors.nord11}
 
 [module/poweroff]
 type = custom/script
@@ -263,26 +219,28 @@ format-connected-prefix = " "
 ; ramp-signal-0 = 
 ; ramp-signal-1 = 
 ; ramp-signal-2 = 
+ramp-signal-font = 4
+
 ramp-signal-0 = " N "
-ramp-signal-foreground = ${colors.nord0}
-ramp-signal-background = ${colors.nord14}
+ramp-signal-foreground = ${colors.nord14}
+
 
 format-connected-prefix-foreground = #b6a49b
-label-connected = %{A1:networkmanager_dmenu:} %essid% %downspeed:9%%{A}
+label-connected = %{A1:~/.dotfiles/rofi-network/nmcli-rofi:} %essid% %downspeed:9%%{A}
 
 format-disconnected = <label-disconnected>
 ; format-disconnected-prefix = 
 
 label-disconnected = %{A1:networkmanager_dmenu:} N %{A}
-label-disconnected-foreground = ${colors.back}
-label-disconnected-background = ${colors.red}
+label-disconnected-foreground = ${colors.red}
+label-disconnected-font = 4
 format-padding = 1
 
 [module/bluetooth]
 format-label-margin = 0
 type = custom/script
 
-exec = $HOME/.dotfiles/bt
+exec = $HOME/.dotfiles/bt-2
 
 tail = true
 interval = 2
