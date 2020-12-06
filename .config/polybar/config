@@ -120,14 +120,13 @@ format-discharging = %{A1:kitty -e gotop &:}<ramp-capacity> <label-discharging>%
 label-charging = +%percentage%%
 label-discharging = %percentage%%
 label-full = " Full "
+format-full = %{A1:kitty -e gotop &:}<ramp-capacity> <label-full>%{A1:kitty -e gotop &:}
 
 ramp-capacity-foreground = ${colors.nord14}
 
 ramp-capacity-0-foreground = ${colors.nord11}
 ramp-capacity-1-foreground = ${colors.nord12}
 ramp-capacity-2-foreground = ${colors.nord13}
-
-label-full-foreground = ${colors.nord14}
 
 ramp-capacity-font = 4
 
@@ -226,7 +225,7 @@ ramp-signal-foreground = ${colors.nord14}
 
 
 format-connected-prefix-foreground = #b6a49b
-label-connected = %{A1:~/.dotfiles/rofi-network/nmcli-rofi:} %essid% %downspeed:9%%{A}
+label-connected = %{A1:networkmanager_dmenu:} %essid% %downspeed:9%%{A}
 
 format-disconnected = <label-disconnected>
 ; format-disconnected-prefix = 

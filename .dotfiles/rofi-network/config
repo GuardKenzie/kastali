@@ -1,0 +1,23 @@
+# Config for rofi-wifi-menu
+NMCLI_ROFI_SOURCE=$HOME/config
+
+# position values:
+# 1 2 3
+# 8 0 4
+# 7 6 5
+POSITION=0
+
+#y-offset
+YOFF=0
+
+#x-offset
+XOFF=0
+
+#window width correction
+MAGIC=-5
+
+#fields to be displayed
+FIELDS=SSID,SECURITY,BARS
+
+#font
+FONT="Jetbrains Mono 12"

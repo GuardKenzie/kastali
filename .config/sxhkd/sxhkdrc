@@ -18,7 +18,7 @@ alt + Return
 
 # program launcher
 alt + w
-        rofi -show drun
+    ~/.dotfiles/dm
 
 # make sxhkd reload its configuration files:
 alt + Escape

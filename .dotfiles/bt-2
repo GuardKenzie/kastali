@@ -1,0 +1,46 @@
+#! /bin/bash
+#
+# bt.sh
+# Copyright (C) 2020 kenzie <kenzie@willowroot>
+#
+# Distributed under terms of the MIT license.
+#
+
+
+source $HOME/.dotfiles/scheme
+disconnected=$nord7
+connected=$nord14
+off=$nord7
+
+status="$(bluetoothctl show | grep 'Powered: *' | sed 's/\W*Powered:\W//')"
+
+prefix='%{T3} z %{T-}'
+
+if [[ $status == 'yes' ]]
+then
+    conn="$(bluetoothctl info | grep 'Name:*' | sed 's/\W*Name:\W//' | head -1)"
+
+    if [[ $conn == '' ]]
+    then
+        if [[ $1 == 'status' ]]
+        then
+            echo 0
+        else
+            echo "%{A1:bluetoothctl power off:}%{F$nord7}$prefix%{F-}%{A}"
+        fi
+    else
+        if [[ $1 == 'status' ]]
+        then
+            echo 1
+        else
+            echo "%{A1:bluetoothctl power off:}%{F$nord14}$prefix%{F-}  $conn%{A}"
+        fi
+    fi
+else
+    if [[ $1 == 'status' ]]
+    then
+        echo -1
+    else
+        echo "%{A1:bluetoothctl power on:}%{F$nord11}$prefix%{F-}%{A}"
+    fi
+fi

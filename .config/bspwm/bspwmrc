@@ -32,6 +32,8 @@ bspc rule -a \* state=pseudo_tiled
 bspc rule -a Zathura state=tiled
 
 bspc rule -a Inkscape state=floating center=on
+bspc rule -a Gcr-prompter state=floating
+bspc rule -a dmenu state=floating center=on private=on layer=above
 bspc rule -a URxvt:popup-bottom-center state=floating rectangle=600x100+0+1080 center=off
 
 xsetroot -cursor_name left_ptr &

@@ -1,5 +1,5 @@
 # Polar night
-nord0=#2E3440
+nord0=#262A33
 nord1=#3B4252
 nord2=#434C5E
 nord3=#4C566A
@@ -23,8 +23,8 @@ nord14=#A3BE8C
 nord15=#B48EAD
 
 
-back=#2e3440
-fore=#d8dee6
+back=#262a33
+fore=#d8dee9
 
 red=#bf616a
 yellow=#e3be8c
