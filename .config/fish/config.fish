@@ -1,5 +1,6 @@
 alias em='emacsclient -c'
 alias emt='emacsclient -t'
+alias vim='nvim'
 
 # Commands redefinition
 alias clear='clear;neofetch'

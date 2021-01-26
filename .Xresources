@@ -1,10 +1,10 @@
 Xcursor.theme: Human
-URxvt.font: xft:FantasqueSans Mono:size=14
+URxvt.font: xft:JetBrains Mono:size=14
 URxvt.scrollBar: false
 URxvt.internalBorder: 20 
 URxvt.fading: 0
 
-#define nord0 #2E3440
+#define nord0 #262A33
 #define nord1 #3B4252
 #define nord2 #434C5E
 #define nord3 #4C566A

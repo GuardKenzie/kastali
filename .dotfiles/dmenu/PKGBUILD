@@ -4,7 +4,7 @@
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
-
+ 
 pkgname=dmenu
 pkgver=4.9
 pkgrel=1
@@ -17,7 +17,8 @@ source=(https://dl.suckless.org/tools/dmenu-${pkgver}.tar.gz
         https://tools.suckless.org/dmenu/patches/highpriority/dmenu-highpriority-4.9.diff
         https://tools.suckless.org/dmenu/patches/center/dmenu-center-20200111-8cd37e1.diff 
         https://tools.suckless.org/dmenu/patches/grid/dmenu-grid-4.9.diff
-        https://tools.suckless.org/dmenu/patches/managed/dmenu-managed-4.9.diff)
+        https://tools.suckless.org/dmenu/patches/managed/dmenu-managed-4.9.diff
+        https://raw.githubusercontent.com/GuardKenzie/allskonar/master/dmenu-hp-exact-4.9.diff)
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -28,6 +29,7 @@ prepare() {
   patch --strip=1 --input=../dmenu-center-20200111-8cd37e1.diff
   patch --strip=1 --input=../dmenu-grid-4.9.diff
   patch --strip=1 --input=../dmenu-managed-4.9.diff
+  patch --strip=1 --input=../dmenu-hp-exact-4.9.diff
 }
 
 build() {
@@ -49,4 +51,5 @@ md5sums=('9a537ec9a3a2ce9f08963d66b56cc030'
          '63287c6b5abe9db36ba1efd4aa71f78c'
          '4e217e892e2ca8bba1b9fd8d4d5411e3'
          'e65418011314f9324d1390826daae7f5'
-         'c8e5dd63e262110b1182c498be410fd1')
+         'c8e5dd63e262110b1182c498be410fd1'
+         '725b961ef5a2578c667df9fb24b6b2c7')

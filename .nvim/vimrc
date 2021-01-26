@@ -1,0 +1,99 @@
+let mapleader=","
+
+inoremap jj <C-C>
+
+" Kite
+set completeopt=menu
+set completeopt+=menuone
+set completeopt+=noinsert
+
+let g:kite_supported_languages = ['python', 'cpp', 'js']
+
+
+" C++
+noremap <silent> <F4> :!g++ % -std=c++17 -o temp<cr>
+noremap <silent> <F5> :!g++ % -std=c++17 -o temp; ./temp; rm temp<cr>
+noremap <silent> <F6> :!python %<cr>
+
+" Git
+nnoremap <leader>ga :!git add .<cr>
+nnoremap <leader>gu :!git pull<cr>
+
+" Look & feel
+set number
+set nohlsearch
+set cmdheight=1
+set scrolloff=10
+set noshowmode
+
+" Filetypes
+syntax on
+
+" Colorscheme
+colorscheme nord
+
+" Lightline
+let g:lightline = {
+    \ 'colorscheme': 'nord',
+    \ 'active': {
+    \   'left': [ ['mode', 'paste'],
+    \             ['readonly', 'filename','kite', 'modified'] ]
+    \ },
+    \ 'component_function': {
+    \   'kite': 'kite#statusline'
+    \ }
+    \ }
+set laststatus=2
+
+
+" Rainbow
+let g:rainbow_active = 1
+
+let g:rainbow_conf = {
+            \ 'ctermfgs': ['blue', 'magenta', 'red', 'cyan', 'yellow', 'magenta']
+            \ }
+
+" Tab
+filetype plugin indent on
+
+set expandtab
+set autoindent
+
+set shiftwidth=4
+set softtabstop=4
+
+" LaTeX
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_CompileRule_pdf = 'pdflatex -shell-escape $*'
+let g:Tex_ViewRule_pdf = 'zathura -c ~/.dotfiles/zathura'
+let g:Tex_GotoError=0
+
+let g:Tex_IgnoredWarnings = 
+\"Underfull\n".
+\"\\headheight is too small\n".
+\"Overfull\n".
+\"specifier changed to\n".
+\"You have requested\n".
+\"Missing number, treated as zero.\n".
+\"There were undefined references\n".
+\"Citation %.%# undefined\n"
+
+let g:Tex_IgnoreLevel = 8
+
+let g:Tex_UseMakefile = 1
+
+" NerdTree
+map <C-o> :NERDTreeToggle<CR>
+
+" Autoclose
+let g:AutoClosePairs = {'"': '"', '[': ']', '''': '''', '(': ')', '{': '}'}
+
+" Templates
+let g:templates_directory = '~/.nvim/templates'
+
+" Conceal
+set conceallevel=2
+let g:tex_conceal="abdgm"
+hi clear Conceal
+
+

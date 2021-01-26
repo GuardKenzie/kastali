@@ -1,0 +1,16 @@
+" vim
+call plug#begin('~/.nvim/plugged')
+
+Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'Townk/vim-autoclose'
+Plug 'tpope/vim-commentary'
+Plug 'vim-latex/vim-latex'
+Plug 'sheerun/vim-polyglot'
+Plug 'aperezdc/vim-template'
+Plug 'luochen1990/rainbow'
+Plug 'kiteco/vim-plugin'
+
+call plug#end()
