@@ -1,0 +1,19 @@
+.queue-tabBar-active {
+    color: var(--spice-main);
+}
+
+.main-playButton-PlayButton.main-playButton-primary {
+    color: var(--spice-main);
+}
+
+.main-addButton-active {
+    color: var(--spice-heart) !important;
+}
+
+.main-trackList-active .main-trackList-rowMarker {
+    filter: invert(61%) sepia(89%) saturate(921%) hue-rotate(208deg) brightness(102%) contrast(94%);
+}
+
+.main-trackList-active .main-trackList-rowMarker * {
+    filter: brightness(0);
+}
