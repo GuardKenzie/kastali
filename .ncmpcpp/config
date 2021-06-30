@@ -1,32 +1,18 @@
-[visualizer]
-visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_in_stereo = "no"
-visualizer_type = "spectrum"
-visualizer_output_name = "my_fifo"
-visualizer_look = "●┃"
-visualizer_color = "default"
-
 [header]
 header_visibility = "no"
-header_window_color = "default"
-volume_color = "default"
-state_line_color = "black"
 
 [playlist]
 playlist_display_mode = "classic"
 song_list_format = "{{%a - %t}|{%f}}{$R%l}"
 now_playing_prefix = "$b$5"
 now_playing_suffix = "$/b$9"
-current_item_prefix = "$7$b$r"
+current_item_prefix = "$5$b$r"
 current_item_suffix = "$9$/b$/r"
 
 
 [statusbar]
-progressbar_look = "  "
-progressbar_color = "black"
+progressbar_look = "   "
 statusbar_visibility = "no"
-statusbar_color = "default"
-song_status_format = "{{%a{ - %t}}|{ - %f}{ - %b{ (%y)}}}"
 
 [library]
 song_library_format = "{{%a - %t}|{%f}}{$R%l}"
@@ -36,5 +22,4 @@ empty_tag_color = "black"
 colors_enabled = "yes"
 main_window_color = "default"
 centered_cursor = "yes"
-enable_window_title = "yes"
 external_editor = "vim"

@@ -30,11 +30,16 @@ set noshowmode
 syntax on
 
 " Colorscheme
-colorscheme nord
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+colorscheme tokyonight
 
 " Lightline
 let g:lightline = {
-    \ 'colorscheme': 'nord',
+    \ 'colorscheme': 'tokyonight',
     \ 'active': {
     \   'left': [ ['mode', 'paste'],
     \             ['readonly', 'filename','kite', 'modified'] ]
@@ -47,7 +52,7 @@ set laststatus=2
 
 
 " Rainbow
-let g:rainbow_active = 1
+let g:rainbow_active = 0
 
 let g:rainbow_conf = {
             \ 'ctermfgs': ['blue', 'magenta', 'red', 'cyan', 'yellow', 'magenta']
@@ -67,6 +72,8 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'pdflatex -shell-escape $*'
 let g:Tex_ViewRule_pdf = 'zathura -c ~/.dotfiles/zathura'
 let g:Tex_GotoError=0
+
+let g:Tex_AdvancedMath = 1
 
 let g:Tex_IgnoredWarnings = 
 \"Underfull\n".

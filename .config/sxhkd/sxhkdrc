@@ -72,8 +72,8 @@ super + {_,ctrl + }{h,j,k,l}
 	bspc node -{s,f} {west,south,north,east}
 
 # focus the node for the given path jump
-alt + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+# alt + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 alt + {_,shift + }Tab

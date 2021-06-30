@@ -1,6 +1,13 @@
 #!/bin/bash
-ffmpeg -i "$1" -loglevel quiet  -an -vcodec copy /tmp/cover.jpg
 
-notify-send -i /tmp/cover.jpg "Now Playing" "$(mpc --format '%album% - %title% \n%artist%' current)"
+track="$(mpc --format %id% current)"
 
-rm /tmp/cover.jpg
+if [[ $track != "" ]] 
+then
+    ffmpeg -i "$1" -loglevel quiet  -an -vcodec copy /tmp/cover.jpg
+
+    notify-send -i /tmp/cover.jpg "$(mpc --format '%title%\n%artist%' current)"
+
+    rm /tmp/cover.jpg
+fi
+

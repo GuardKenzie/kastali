@@ -1,33 +1,26 @@
-# Polar night
-nord0=#262A33
-nord1=#3B4252
-nord2=#434C5E
-nord3=#4C566A
+fore=#a9b1d6
+back=#1a1b26
 
-# Snow storm
-nord4=#D8DEE9
-nord5=#E5E9F0
-nord6=#ECEFF4
+black1=#24283b
+black2=#414868
 
-# Frost
-nord7=#8FBCBB
-nord8=#88C0D0
-nord9=#81A1C1
-nord10=#5E81AC
+red1=#f7768e
+red2=#fb8a92
 
-# Aurora
-nord11=#BF616A
-nord12=#D08770
-nord13=#EBCB8B
-nord14=#A3BE8C
-nord15=#B48EAD
+green1=#9ece6a
+green2=#aee392
 
+yellow1=#e0af68
+yellow2=#e4c28f
 
-back=#262a33
-fore=#d8dee9
+blue1=#7aa2f7
+blue2=#7dcfff
 
-red=#bf616a
-yellow=#e3be8c
-orange=#d08770
-purple=#b48ead
-green=#a3be8c
+magenta1=#bb9af7
+magenta2=#ceb8f6
+
+cyan1=#73daca
+cyan2=#b4f9f8
+
+white1=#565f89
+white2=#c0caf5

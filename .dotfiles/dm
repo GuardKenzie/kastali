@@ -6,4 +6,4 @@ FG=`cat ~/.dotfiles/scheme | grep -o "fore=#[0-9a-z]*" | sed "s/fore=//"`
 BG=`cat ~/.dotfiles/scheme | grep -o "back=#[0-9a-z]*" | sed "s/back=//"`
 FONT='Gohu GohuFont-14'
 FONT='Jetbrains Mono-11'
-dmenu_run -b -nb $BG -sb $FG -sf $BG -nf $FG -fn "$FONT" -c -wm -l 10 -hp "firefox,discord" -hf $FG -hb $nord3
+dmenu_run -b -nb $BG -sb $FG -sf $BG -nf $FG -fn "$FONT" -c -wm -l 10 -hp "firefox,discord" -hf $FG -hb $black2

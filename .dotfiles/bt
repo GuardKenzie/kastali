@@ -8,9 +8,9 @@
 
 
 source $HOME/.dotfiles/scheme
-disconnected=$nord7
-connected=$nord14
-off=$nord7
+disconnected=$cyan1
+connected=$green1
+off=$red1
 
 status="$(bluetoothctl show | grep 'Powered: *' | sed 's/\W*Powered:\W//')"
 

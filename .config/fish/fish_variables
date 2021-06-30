@@ -1,10 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3100
-SETUVAR _fish_abbr_eca:emacsclient\x20\x2dc\x20\x7e/\x2econfig/awesome/rc\x2elua
-SETUVAR _fish_abbr_ecf:emacsclient\x20\x2dc\x20\x7e/\x2econfig/fish/config\x2efish
-SETUVAR _fish_abbr_eck:emacsclient\x20\x2dc\x20\x7e/\x2econfig/kitty/kitty\x2econf
-SETUVAR _fish_abbr_ecr:emacsclient\x20\x2dc\x20\x7e/\x2econfig/rofi/config\x2erasi
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:81a1c1
@@ -28,29 +24,11 @@ SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrbl
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR fish_greeter:neofetch
-SETUVAR fish_greeting:neofetch
 SETUVAR fish_key_bindings:fish_default_key_bindings
 SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR nord0:\x232E3440
-SETUVAR nord1:\x233B4252
-SETUVAR nord10:\x235E81AC
-SETUVAR nord11:\x23BF616A
-SETUVAR nord12:\x23D08770
-SETUVAR nord13:\x23EBCB8B
-SETUVAR nord14:\x23A3BE8C
-SETUVAR nord15:\x23B48EAD
-SETUVAR nord2:\x23434C5E
-SETUVAR nord3:\x234C566A
-SETUVAR nord4:\x23D8DEE9
-SETUVAR nord5:\x23E5E9F0
-SETUVAR nord6:\x23ECEFF4
-SETUVAR nord7:\x238FBCBB
-SETUVAR nord8:\x2388C0D0
-SETUVAR nord9:\x2381A1C1
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_color_command_duration:pure_color_warning
 SETUVAR pure_color_current_directory:\x235E81AC

@@ -1,41 +1,148 @@
 [colors]
 include-file = ~/.dotfiles/scheme
 
+[vars]
+include-file = ~/.config/polybar/vars
+
+
+;;;;; DATE BAR ;;;;;
+
+[bar/date]
+foreground = ${colors.fore}
+background      = #00000000
+margin-top      = -1080
+width           =  300
+height          =  30
+offset-y        = 180
+offset-x        = ${vars.offset-x} 
+bottom          = true
+
+override-redirect = true
+wm-restack = bspwm
+
+font-0 = "Jetbrains Mono:style=Regular:size=18;2"
+
+modules-left= date
+
+
+;;;;; MPD BAR ;;;;;
+
+[bar/mpd]
+foreground = ${colors.fore}
+background      = #00000000
+margin-top      = -1080
+width           =  600
+height          =  30
+offset-y        = 140 
+offset-x        = ${vars.offset-x} 
+bottom          = true
+
+override-redirect = true
+wm-restack = bspwm
+
+font-0 = "Jetbrains Mono:style=Regular:size=11;2"
+font-1 = "SauceCodePro Nerd Font Mono:style=Regular:size=13;2"
+font-2 = "Jetbrains Mono:style=Regular:size=1;2"
+
+modules-left= spotify
+
+
+;;;;; BT BAR ;;;;;
+
+[bar/bluetooth]
+foreground = ${colors.fore}
+background      = #00000000
+margin-top      = -1080
+width           =  300
+height          =  30
+offset-y        = 110
+offset-x        = ${vars.offset-x-a}
+bottom          = true
+
+override-redirect = true
+wm-restack = bspwm
+
+font-0 = "Jetbrains Mono:style=Regular:size=11;2"
+font-1 = "dripicons\-v2:style=v2:size=11;3"
+font-2 = "Jetbrains Mono:style=Regular:size=1;2"
+
+modules-left= bluetooth
+
+
+;;;;;  NETWORK BAR ;;;;;
+
+[bar/network]
+foreground = ${colors.fore}
+background      = #00000000
+margin-top      = -1080
+width           =  300
+height          =  30
+offset-y        = 80 
+offset-x        = ${vars.offset-x} 
+bottom          = true
+
+override-redirect = true
+wm-restack = bspwm
+
+
+font-0 = "Jetbrains Mono:style=Regular:size=11;2"
+font-1 = "Jetbrains Mono:style=Bold:size=11;2"
+
+modules-left= eth
+
+
+;;;;; CPU BAR ;;;;;
+
+[bar/cpu]
+foreground = ${colors.fore}
+background      = #00000000
+margin-top      = -1080
+width           =  300
+height          =  30
+offset-y        = 50
+offset-x        = ${vars.offset-x-a}
+bottom          = true
+
+override-redirect = true
+wm-restack = bspwm
+
+font-0 = "Jetbrains Mono:style=Regular:size=11;2"
+font-1 = "Jetbrains Mono:style=Bold:size=11;2"
+font-2 = "Jetbrains Mono:style=Regular:size=2;2"
+
+modules-left = cpu
+
+
+;;;;;; TOP BAR ;;;;;
+
 [bar/bar]
-/* background = ${colors.nord0} */
-/* foreground = ${colors.nord4} */
-background = #60000000
-foreground = ${colors.nord4}
+background = #00000000
+foreground = ${colors.fore}
 
 width                    = 1920
-height                   = 35
+height                   = 40
 radius                   = 0
 line-size                = 1
 bottom                   = false
 border-bottom-size       = 0
 padding-left             = 3
 padding-right            = 3
-/* module-margin-left       = 1% */
-/* module-margin-right      = 1% */
 
 fixed-center = true
 font-1 = "Typicons:size=13;1"
 font-2 = "dripicons\-v2:style=v2:size=11;3"
 
-/* font-0 = "Fantasque Sans Mono:style=Regular:size=13;1" */
-/* font-3 = "Fantasque Sans Mono:style=Bold:size=13;1" */
 font-0 = "Jetbrains Mono:style=Regular:size=11;2"
 font-3 = "Jetbrains Mono:style=Bold:size=11;2"
 font-4 = "SauceCodePro Nerd Font Mono:style=Regular:size=13;2"
 
 wm-restack = bspwm
 
-modules-left = wm mpd
-modules-center = date
-modules-right = pulseaudio xbacklight battery eth bluetooth 
+modules-left = wm
+modules-center = time
+modules-right = pulseaudio xbacklight battery
 module-margin = 2
 
-;left - center - right - none
 tray-position = none
 tray-maxsize = 0
 tray-detached = true
@@ -61,14 +168,16 @@ type= internal/bspwm
 label-empty = 
 
 label-focused = " %name% "
-label-focused-underline = ${colors.nord4}
+label-focused-underline = ${colors.fore}
 
 label-occupied = " %name% "
 
 label-urgent = " %name% "
-label-urgent-foreground = ${colors.nord11}
-label-urgent-underline = ${colors.nord11}
+label-urgent-foreground = ${colors.red1}
+label-urgent-underline = ${colors.red1}
 label-urgent-font = 4
+
+
 
 [module/mpd]
 type = internal/mpd
@@ -76,38 +185,30 @@ type = internal/mpd
 label-song = %artist% - %title%
 format-online = <toggle> %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
 
-format-paused = <toggle> | %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
-format-playing = <toggle> | %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
-format-stopped = 
+format-paused = <toggle>  %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-playing = <toggle>  %{A3:mpc stop:}%{A1:kitty -e ncmpcpp &:}<label-song> <label-time>%{A}%{A}
+format-stopped = <toggle>  Stopped
 
-icon-pause-font = 5
-icon-play-font = 5
+icon-pause-font = 2
+icon-play-font = 2
 
-;icon-pause = "  "
-;icon-play = "  "
-icon-pause = ""
-icon-play = ""
-; icon-pause = "  "
-; icon-play = "  "
+icon-pause = "%{T3 }         %{T-}"
+icon-play = "%{T3 }         %{T-}"
+
+
 
 [module/xbacklight]
 type = internal/xbacklight
-
 enable-scroll = true
 
 format = <ramp> <label>
 
 ramp-font = 4
 ramp-0 = " L "
-
-ramp-0-foreground = ${colors.nord15}
+ramp-0-foreground = ${colors.magenta1}
 
 label = %percentage%%
 
-bar-width = 10
-bar-indicator = ╋
-bar-fill = ━
-bar-empty = ━
 
 [module/battery]
 type = internal/battery
@@ -116,17 +217,19 @@ battery = BAT0
 full-at = 98
 
 format-charging = %{A1:kitty -e gotop &:}<animation-charging> <label-charging>%{A}
-format-discharging = %{A1:kitty -e gotop &:}<ramp-capacity> <label-discharging>%{A}
 label-charging = +%percentage%%
+
+format-discharging = %{A1:kitty -e gotop &:}<ramp-capacity> <label-discharging>%{A}
 label-discharging = %percentage%%
-label-full = " Full "
+
 format-full = %{A1:kitty -e gotop &:}<ramp-capacity> <label-full>%{A1:kitty -e gotop &:}
+label-full = " Full "
 
-ramp-capacity-foreground = ${colors.nord14}
 
-ramp-capacity-0-foreground = ${colors.nord11}
-ramp-capacity-1-foreground = ${colors.nord12}
-ramp-capacity-2-foreground = ${colors.nord13}
+ramp-capacity-foreground = ${colors.green1}
+ramp-capacity-0-foreground = ${colors.red1}
+ramp-capacity-1-foreground = ${colors.yellow2}
+ramp-capacity-2-foreground = ${colors.yellow1}
 
 ramp-capacity-font = 4
 
@@ -141,36 +244,33 @@ ramp-capacity-7 = " B "
 ramp-capacity-8 = " B "
 ramp-capacity-9 = " B "
 
-; ramp-capacity-0 = 
-; ramp-capacity-1 = 
-; ramp-capacity-2 = 
-; ramp-capacity-3 = 
 
-; animation-charging-0 = 
-; animation-charging-1 = 
-; animation-charging-2 = 
-
-anumation-charging-font = 4
+animation-charging-font = 4
 
 animation-charging-0 = " B    "
 animation-charging-1 = " B.   "
 animation-charging-2 = " B..  "
 animation-charging-3 = " B... "
 
-animation-charging-foreground = ${colors.nord13}
+animation-charging-foreground = ${colors.yellow1}
 
 animation-charging-framerate = 500
 
+
+
+[module/time]
+type = internal/date
+interval = 5
+time = %H:%M
+label = %time%
+
+
 [module/date]
 type = internal/date
-label-active-font = 2
 interval = 5 
-date = %a %d %b
-time = %l:%M %p
-label = " %{A1:urxvt -name cal-pop -geometry 20x10 -e sh -c "cal;read":}%{A3:urxvt -name cal-pop -geometry 20x25 -e sh -c "cal -3;read":}%{A2:urxvt -name cal-pop -geometry 66x35 -e sh -c "cal -y;read":}%date%%{A}%{A}%{A} - %time% "
-;label =  %time%
-format-padding = 1
-label-foreground=${colors.nord4}
+date = %d. %B
+label = %date%
+label-foreground=${colors.fore}
 
 [module/pulseaudio]
 module-margin = 0
@@ -188,8 +288,8 @@ label-muted-font = 4
 ramp-volume-0 = " V "
 label-muted = " M "
 
-ramp-volume-foreground = ${colors.nord13}
-label-muted-foreground = ${colors.nord11}
+ramp-volume-foreground = ${colors.yellow1}
+label-muted-foreground = ${colors.red1}
 
 [module/poweroff]
 type = custom/script
@@ -213,27 +313,22 @@ type = internal/network
 label-active-font = 2
 interface = wlan0
 interval = 3.0
-format-connected = <ramp-signal> <label-connected>
-format-connected-prefix = " "
-; ramp-signal-0 = 
-; ramp-signal-1 = 
-; ramp-signal-2 = 
-ramp-signal-font = 4
-
-ramp-signal-0 = " N "
-ramp-signal-foreground = ${colors.nord14}
 
 
-format-connected-prefix-foreground = #b6a49b
-label-connected = %{A1:networkmanager_dmenu:} %essid% %downspeed:9%%{A}
+format-connected = <label-connected>
+format-connected-prefix = "N  "
+format-connected-prefix-foreground = ${colors.green1}
+format-connected-prefix-font = 2
 
+label-connected = %{A1:networkmanager_dmenu:}%{T5} %{T-}%essid% %{A}
+
+format-disconnected-prefix = "N  "
+format-disconnected-prefix-foreground = ${colors.red1}
+format-disconnected-prefix-font = 2
 format-disconnected = <label-disconnected>
-; format-disconnected-prefix = 
+label-disconnected = %{A1:networkmanager_dmenu:}%{T5} %{T-}Not connected %{A}
 
-label-disconnected = %{A1:networkmanager_dmenu:} N %{A}
-label-disconnected-foreground = ${colors.red}
-label-disconnected-font = 4
-format-padding = 1
+format-padding = 0
 
 [module/bluetooth]
 format-label-margin = 0
@@ -244,9 +339,34 @@ exec = $HOME/.dotfiles/bt-2
 tail = true
 interval = 2
 
-format = <label>
-
 label = %{A3:kitty -e bluetoothctl &:}%output%%{A}
 
-format-prefix-font=3
-format-prefix-background = ${colors.nord1}
+[module/window]
+type = custom/script
+
+exec = $HOME/.dotfiles/window-name.sh
+
+tail = true
+interval = 0.2
+label = %output%
+
+
+[module/cpu]
+type = internal/cpu
+
+interval = 0.5
+
+format = <ramp-load>   <label>
+
+label = %percentage%%
+
+ramp-load-0 = %{T3}  %{T2}C
+ramp-load-font = 2
+ramp-load-0-foreground = ${colors.blue1}
+
+
+[module/spotify]
+type = custom/script
+interval = 1
+format = <label>
+exec = python $HOME/.dotfiles/spotify_status.py -p "%{T3}                  %{T-},%{T3}                  %{T-}" -f "{play_pause} {artist} - {song}" -t 100

@@ -12,5 +12,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'aperezdc/vim-template'
 Plug 'luochen1990/rainbow'
 Plug 'kiteco/vim-plugin'
+Plug 'dracula/vim',{'name': 'dracula'}
+Plug 'ghifarit53/tokyonight-vim'
 
 call plug#end()

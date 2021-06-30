@@ -8,13 +8,13 @@
 
 
 source $HOME/.dotfiles/scheme
-disconnected=$nord7
-connected=$nord14
-off=$nord7
+disconnected=$cyan1
+connected=$green1
+off=$red1
 
 status="$(bluetoothctl show | grep 'Powered: *' | sed 's/\W*Powered:\W//')"
 
-prefix='%{T3} z %{T-}'
+prefix='%{T2}z%{T3}        %{T-}'
 
 if [[ $status == 'yes' ]]
 then
@@ -26,14 +26,14 @@ then
         then
             echo 0
         else
-            echo "%{A1:bluetoothctl power off:}%{F$nord7}$prefix%{F-}%{A}"
+            echo "%{A1:bluetoothctl power off:}%{F$blue1}$prefix%{F-}  Not connected%{A}"
         fi
     else
         if [[ $1 == 'status' ]]
         then
             echo 1
         else
-            echo "%{A1:bluetoothctl power off:}%{F$nord14}$prefix%{F-}  $conn%{A}"
+            echo "%{A1:bluetoothctl power off:}%{F$green1}$prefix%{F-}  $conn%{A}"
         fi
     fi
 else
@@ -41,6 +41,6 @@ else
     then
         echo -1
     else
-        echo "%{A1:bluetoothctl power on:}%{F$nord11}$prefix%{F-}%{A}"
+        echo "%{A1:bluetoothctl power on:}%{F$red1}$prefix%{F-}  Disabled%{A}"
     fi
 fi

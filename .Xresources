@@ -1,45 +1,36 @@
-Xcursor.theme: Human
-URxvt.font: xft:JetBrains Mono:size=14
-URxvt.scrollBar: false
-URxvt.internalBorder: 20 
-URxvt.fading: 0
+! special
+*.foreground:   #a9b1d6
+*.background:   #1a1b26
+*.cursorColor:  #a9b1d6
 
-#define nord0 #262A33
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
+! black
+*.color0:       #24283b
+*.color8:       #414868
 
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
-*fading: 35
-*fadeColor: nord3
+! red
+*.color1:       #f7768e
+*.color9:       #fb8a92
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+! green
+*.color2:       #9ece6a
+*.color10:      #aee392
+
+! yellow
+*.color3:       #e0af68
+*.color11:      #e4c28f
+
+! blue
+*.color4:       #7aa2f7
+*.color12:      #7dcfff
+
+! magenta
+*.color5:       #bb9af7
+*.color13:      #ceb8f6
+
+! cyan
+*.color6:       #73daca
+*.color14:      #b4f9f8
+
+! white
+*.color7:       #565f89
+*.color15:      #c0caf5
