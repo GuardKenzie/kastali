@@ -1,5 +1,7 @@
 #! /bin/sh
 
+xsetroot -bg "#000000"
+
 source ~/.dotfiles/scheme
 
 bspc config normal_border_color $black1
@@ -34,8 +36,8 @@ bspc rule -a Zathura state=tiled
 bspc rule -a Inkscape state=floating center=on
 bspc rule -a Gcr-prompter state=floating
 bspc rule -a dmenu state=floating center=on private=on layer=above
-bspc rule -a URxvt:popup-bottom-center state=floating rectangle=600x100+0+1080 center=off
-bspc rule -a URxvt:cal-pop state=floating
+
+bspc rule -a firefox:\* rectangle=1000x800+460+140
 
 xsetroot -cursor_name left_ptr &
 

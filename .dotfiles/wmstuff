@@ -1,4 +1,5 @@
 # /home/mononoke/5bwm/wm &
+feh --bg-fill ~/.dotfiles/bg.jpg
 
 xrdb ~/.Xresources
 
@@ -24,7 +25,6 @@ xset fp rehash
 /usr/lib/notification-daemon-1.0/notification-daemon &
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 nm-applet &
-feh --bg-fill ~/.dotfiles/bg.jpg
 udiskie &
 
 sleep 10 && amixer -c 0 sset "Auto-Mute Mode" Enabled &
