@@ -1,0 +1,95 @@
+From 5aee7d1488354322462e243416e27e026d73e0eb Mon Sep 17 00:00:00 2001
+From: Miles Alan <m@milesalan.com>
+Date: Tue, 16 Jun 2020 21:40:30 -0500
+Subject: [PATCH] Add -wm flag to run dmenu as managed WM window (e.g. no
+ override_redirect)
+
+---
+ dmenu.1 |  4 ++++
+ dmenu.c | 20 +++++++++++++++++---
+ 2 files changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/dmenu.1 b/dmenu.1
+index 323f93c..89a9493 100644
+--- a/dmenu.1
++++ b/dmenu.1
+@@ -22,6 +22,7 @@ dmenu \- dynamic menu
+ .IR color ]
+ .RB [ \-w
+ .IR windowid ]
++.RB [ \-wm ]
+ .P
+ .BR dmenu_run " ..."
+ .SH DESCRIPTION
+@@ -80,6 +81,9 @@ prints version information to stdout, then exits.
+ .TP
+ .BI \-w " windowid"
+ embed into windowid.
++.TP
++.BI \-wm
++Display as a managed WM window (e.g. don't set overide_redirect flag)
+ .SH USAGE
+ dmenu is completely controlled by the keyboard.  Items are selected using the
+ arrow keys, page up, page down, home, and end.
+diff --git a/dmenu.c b/dmenu.c
+index 6b8f51b..4632eb4 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -44,6 +44,7 @@ static struct item *items = NULL;
+ static struct item *matches, *matchend;
+ static struct item *prev, *curr, *next, *sel;
+ static int mon = -1, screen;
++static int managed = 0;
+ 
+ static Atom clip, utf8;
+ static Display *dpy;
+@@ -198,7 +199,7 @@ grabkeyboard(void)
+ 	struct timespec ts = { .tv_sec = 0, .tv_nsec = 1000000  };
+ 	int i;
+ 
+-	if (embed)
++	if (embed || managed)
+ 		return;
+ 	/* try to grab keyboard, we may have to wait for another process to ungrab */
+ 	for (i = 0; i < 1000; i++) {
+@@ -651,7 +652,7 @@ setup(void)
+ 	match();
+ 
+ 	/* create menu window */
+-	swa.override_redirect = True;
++	swa.override_redirect = managed ? False : True;
+ 	swa.background_pixel = scheme[SchemeNorm][ColBg].pixel;
+ 	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask;
+ 	win = XCreateWindow(dpy, parentwin, x, y, mw, mh, 0,
+@@ -665,7 +666,18 @@ setup(void)
+ 	                XNClientWindow, win, XNFocusWindow, win, NULL);
+ 
+ 	XMapRaised(dpy, win);
+-	XSetInputFocus(dpy, win, RevertToParent, CurrentTime);
++
++	if (managed) {
++		XTextProperty prop;
++		char *windowtitle = prompt != NULL ? prompt : "dmenu";
++		Xutf8TextListToTextProperty(dpy, &windowtitle, 1, XUTF8StringStyle, &prop);
++		XSetWMName(dpy, win, &prop);
++		XSetTextProperty(dpy, win, &prop, XInternAtom(dpy, "_NET_WM_NAME", False));
++		XFree(prop.value);
++	} else {
++		XSetInputFocus(dpy, win, RevertToParent, CurrentTime);
++	}
++
+ 	if (embed) {
+ 		XSelectInput(dpy, parentwin, FocusChangeMask);
+ 		if (XQueryTree(dpy, parentwin, &dw, &w, &dws, &du) && dws) {
+@@ -705,6 +717,8 @@ main(int argc, char *argv[])
+ 		else if (!strcmp(argv[i], "-i")) { /* case-insensitive item matching */
+ 			fstrncmp = strncasecmp;
+ 			fstrstr = cistrstr;
++		} else if (!strcmp(argv[i], "-wm")) { /* display as managed wm window */
++			managed = 1;
+ 		} else if (i + 1 == argc)
+ 			usage();
+ 		/* these options take one argument */
+-- 
+2.27.0
+

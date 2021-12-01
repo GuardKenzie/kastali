@@ -51,6 +51,9 @@ alt + y
 alt + g
 	bspc node -s biggest
 
+alt + {Down, Up}
+    bspc desktop -f {prev, next}
+
 #
 # state/flags
 #

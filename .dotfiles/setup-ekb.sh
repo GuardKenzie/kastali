@@ -9,6 +9,6 @@
 XKB_SYMBOLS="/usr/share/X11/xkb/symbols/us"
 
 echo >> $XKB_SYMBOLS
-cat /home/kenzie/.dotfiles/trillikb >> $XKB_SYMBOLS
+cat /home/kenzie/.dotfiles/ekb >> $XKB_SYMBOLS
 
-su kenzie -c "setxkbmap us -variant trilli"
+su kenzie -c "setxkbmap us -variant e"

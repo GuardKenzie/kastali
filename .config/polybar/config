@@ -119,7 +119,7 @@ modules-left = cpu
 background = #00000000
 foreground = ${colors.fore}
 
-width                    = 1920
+width                    = 100%
 height                   = 40
 radius                   = 0
 line-size                = 1

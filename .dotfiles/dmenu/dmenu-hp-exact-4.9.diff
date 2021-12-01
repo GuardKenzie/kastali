@@ -1,0 +1,11 @@
+--- a/dmenu.c	2020-12-11 09:36:26.906673065 +0000
++++ b/dmenu.c	2020-12-11 09:37:05.166673343 +0000
+@@ -85,7 +85,7 @@
+ 	for (int i = 0; i < length; i++) {
+ 		int len1 = strlen(list[i]);
+ 		int len2 = strlen(item);
+-		if (fstrncmp(list[i], item, len1 > len2 ? len2 : len1) == 0)
++		if (fstrncmp(list[i], item, len1 > len2 ? len1 : len2) == 0)
+ 			return 1;
+ 	}
+ 	return 0;

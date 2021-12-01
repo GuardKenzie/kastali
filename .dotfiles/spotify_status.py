@@ -154,7 +154,7 @@ def printInfo():
 
     # Check if nothing is playing
     if spotify_info["playing"] is mpd_info["playing"] is None:
-        print("Nothin's jammin', bud")
+        print("Nothin's jammin', gurl")
         return
 
     # Check if spotify is open and mpd is not playing
