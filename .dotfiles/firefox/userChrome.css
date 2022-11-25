@@ -69,15 +69,15 @@
 }
 
 .titlebar-close {
-	list-style-image: url(chrome://browser/skin/window-controls/close-highcontrast.svg) !important;;
+	list-style-image: url(chrome://browser/skin/window-controls/close-highcontrast.svg) !important;
 }
 
 .titlebar-min {
-	list-style-image: url(chrome://browser/skin/window-controls/minimize-highcontrast.svg);
+	list-style-image: url(chrome://browser/skin/window-controls/minimize-highcontrast.svg) !important;
 }
 
 .titlebar-max {
-	list-style-image: url(chrome://browser/skin/window-controls/maximize-highcontrast.svg);
+	list-style-image: url(chrome://browser/skin/window-controls/maximize-highcontrast.svg) !important;
 }
 
 .titlebar-min:hover {
