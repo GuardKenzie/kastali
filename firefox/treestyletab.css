@@ -1,0 +1,138 @@
+/* Hide border on tab bar, force its state to 'scroll', adjust margin-left for width of scrollbar. */ 
+#tabbar { 
+  border: 0; 
+  overflow-y: scroll !important; 
+  scrollbar-width: auto; 
+  background-color: #16161e;
+}
+
+tab-item-substance {
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:5px;
+}
+
+tab-closebox {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+tab-item {
+  margin-top: 5px;
+  color: #a9b1d6;
+}
+
+tab-item.active {
+  background-color: #1c1d29;
+}
+
+tab-item img {
+  transition: filter 100ms;
+  filter: grayscale(0%)
+}
+
+/* Hide .twisty and adjust margins so favicons have 7px on left. */
+tab-item .twisty {
+    visibility: hidden;
+    margin-left: -12px;
+}
+
+/* Push tab labels slightly to the right so they're completely hidden in collapsed state. */
+tab-item .label {
+    margin-left: 15px;
+}
+
+/* Hide close buttons on tabs. */
+tab-item .closebox {
+    visibility: collapse;
+}
+
+tab-item:hover .closebox {
+    visibility: initial;
+}
+
+/* Hide sound playing/muted button. */
+.sound-button::before {
+    display: none !important;
+}
+
+/* Center the new tab sign in collapsed state. */
+.newtab-button{
+    margin-top: 1em;
+    padding-left: 0em !important;
+    opacity: 0;
+}
+
+/* ################################################ */
+/* ##### COLOR THEME ############################## */
+/* ################################################ */
+
+:root {
+    background-color: #16161e;
+}
+
+#tabbar {
+    border-right: none;
+    box-shadow: none !important;
+}
+tab-item {
+    box-shadow: none !important;
+}
+tab-item:hover {
+   background-color: #1c1d29;
+}
+
+#tabbar:hover tab-item img {
+  filter: grayscale(0);
+}
+
+#tabbar:hover .newtab-button {
+  opacity: 1;
+}
+
+
+/* Adjust style for tab that has sound playing. */
+tab-item.sound-playing .favicon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    background: #FFFFFF;
+    animation: pulse 2s ease-out 0s infinite;
+    z-index: -1;
+    opacity: 0;
+}
+
+/* Adjust style for tab that is muted. */
+tab-item.muted {
+    opacity: 0.5;
+}
+
+/* Better alignment of Favicons when collapsed  */
+tab-item[data-level][data-level="0"] tab-item-substance {
+  margin-left: 2% !important;
+}
+tab-item[data-level][data-level="1"] tab-item-substance {
+  margin-left: 4% !important;
+}
+tab-item[data-level][data-level="2"] tab-item-substance {
+  margin-left: 6% !important;
+}
+tab-item[data-level][data-level="3"] tab-item-substance {
+  margin-left: 8% !important;
+}
+tab-item[data-level][data-level="4"] tab-item-substance {
+  margin-left: 10% !important;
+}
+tab-item[data-level][data-level="5"] tab-item-substance {
+  margin-left: 12% !important;
+}
+tab-item[data-level][data-level="6"] tab-item-substance {
+  margin-left: 14% !important;
+}
+tab-item[data-level][data-level="7"] tab-item-substance {
+  margin-left: 16% !important;
+}
