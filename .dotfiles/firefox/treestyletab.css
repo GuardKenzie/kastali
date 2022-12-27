@@ -35,8 +35,19 @@ tab-item img {
 
 /* Hide .twisty and adjust margins so favicons have 7px on left. */
 tab-item .twisty {
-    visibility: hidden;
+    opacity: 0;
     margin-left: -12px;
+  	transition: all 0.2s;
+}
+
+tab-item.collapsed {
+    display:none; 
+}
+
+#tabbar:hover tab-item .twisty {
+  opacity: 1;
+  margin-left:1px;
+  margin-right:5px;
 }
 
 /* Push tab labels slightly to the right so they're completely hidden in collapsed state. */
@@ -135,4 +146,8 @@ tab-item[data-level][data-level="6"] tab-item-substance {
 }
 tab-item[data-level][data-level="7"] tab-item-substance {
   margin-left: 16% !important;
+}
+
+tab-item:not(.collapsed) tab-twisty {
+	transition: transform 0s;
 }
