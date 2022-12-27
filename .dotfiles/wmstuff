@@ -1,4 +1,3 @@
-# /home/mononoke/5bwm/wm &
 feh --bg-fill ~/.dotfiles/bg.jpg
 
 xrdb ~/.Xresources

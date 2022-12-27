@@ -33,7 +33,7 @@ syntax on
 " Colorscheme
 set termguicolors
 
-let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
 let g:tokyonight_transparent = 1
 
@@ -98,4 +98,6 @@ set conceallevel=2
 let g:tex_conceal="abdgm"
 hi clear Conceal
 
-
+" Random number
+let g:seed = srand()
+:imap <F2> <C-R>=rand(g:seed) % 1000000<C-M>

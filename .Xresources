@@ -34,3 +34,23 @@
 ! white
 *.color7:       #565f89
 *.color15:      #c0caf5
+
+! Xterm
+XTerm.termName: xterm-256color
+XTerm.vt100.utf8: true
+XTerm.vt100.faceName: JetBrains Mono:size=14:antialias=true
+XTerm.vt100.metaSendsEscape: true
+
+xterm*decTerminalID: vt340
+xterm*numColorRegisters: 256
+xterm*sixelScrolling: 1
+xterm*sixelScrollsRight: 1
+
+
+! URXVT
+URxvt.internalBorder: 24
+URxvt.font: xft:JetBrains Mono:style=Regular:size=14:antialias=true
+URxvt.blodFont: xft:JetBrains Mono:style=Bold:size=14:antialias=true
+URxvt.italicFont: xft:JetBrains Mono:style=Italic:size=14:antialias=true
+URxvt.boldItalicFont: xft:JetBrains Mono:style=Bold Italic:size=14:antialias=true
+URxvt.scrollBar: false

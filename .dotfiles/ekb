@@ -1,8 +1,8 @@
 partial alphanumeric_keys
-xkb_symbols "trilli" {
+xkb_symbols "e" {
 
   include "us(intl)"
-  name[Group1]= "English (US, alt. intl. trilli)";
+  name[Group2]= "English (US, alt. intl. e)";
 
   key <TLDE> { [      grave, asciitilde,    dead_grave,       dead_tilde    ] };
   key <AE05> { [          5, percent,	    EuroSign			    ] };
