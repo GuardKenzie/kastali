@@ -2,6 +2,7 @@
 call plug#begin('~/.nvim/plugged')
 
 Plug 'preservim/nerdtree'
+" Plug 'davidhalter/jedi-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'arcticicestudio/nord-vim'
@@ -10,8 +11,6 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-latex/vim-latex'
 Plug 'sheerun/vim-polyglot'
 Plug 'aperezdc/vim-template'
-Plug 'kiteco/vim-plugin'
-Plug 'dracula/vim',{'name': 'dracula'}
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 call plug#end()

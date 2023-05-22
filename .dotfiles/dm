@@ -6,5 +6,5 @@ FG=`cat ~/.dotfiles/scheme | grep -o "fore=#[0-9a-z]*" | sed "s/fore=//"`
 BG=`cat ~/.dotfiles/scheme | grep -o "back=#[0-9a-z]*" | sed "s/back=//"`
 FONT='Gohu GohuFont-14'
 FONT='Jetbrains Mono-11'
-HIGH_PRIORITY="firefox-nightly,discord,spotify,code,brave,smerge"
-dmenu_run -b -nb $BG -sb $FG -sf $BG -nf $FG -fn "$FONT" -c -wm -l 10 -hp $HIGH_PRIORITY -hf $FG -hb $black1
+HIGH_PRIORITY="firefox,discord,spotify,code,brave,smerge"
+dmenu_run -b -nb $BG -sb $FG -sf $BG -nf $FG -fn "$FONT" -c -wm -l 10 -hp $HIGH_PRIORITY -hf $FG -hb $black1 $1
