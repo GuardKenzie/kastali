@@ -14,3 +14,4 @@
 - Prompt: [Starship](https://starship.rs/)
 - Network and player widget: [EWW](https://github.com/elkowar/eww)
 - Workspace and control center widgets: [Waybar](https://github.com/Alexays/Waybar)
+- Website: [pokedex.mage.black](https://pokedex.mage.black)
