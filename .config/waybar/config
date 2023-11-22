@@ -4,7 +4,6 @@
         "hyprland/workspaces", 
     ],
     "modules-center": [
-        "clock#date", "clock#time",
     ],
     "modules-right": [
         "pulseaudio#icon", "pulseaudio", 

@@ -129,6 +129,9 @@ if __name__ == "__main__":
         try:
             close    = ["eww", "close", "network_list_window"]
             check_output(close, stderr=DEVNULL)
+
+            update = ["eww", "update", "display_network_list=false"]
+            check_output(update, stderr=DEVNULL)
         except CalledProcessError:
             pass
 

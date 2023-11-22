@@ -11,18 +11,37 @@
 (defvar cyan    "#94E2D5")
 (defvar white   "#BAC2DE")
 
+(defvar lavender   "#B4BEFE")
+
 (defvar display_network_list false)
 
 (defvar networkpy "~/.config/eww/scripts/network.py")
 
 (defpoll active_network 
-    :interval "1s" 
+    :interval "5s" 
     "~/.config/eww/scripts/network.py active"
 )
 
 (defpoll available_networks
     :interval "5s" 
+    :run-while display_network_list
     "~/.config/eww/scripts/network.py list"
+)
+
+(deflisten now_playing
+    :initial "{\"stop\": true}"
+    "~/.config/eww/scripts/spotify.py info --monitor"
+)
+
+
+(defpoll HOUR 
+    :interval "5s" 
+    "date +'%I:%M'"
+)
+
+(defpoll DATES
+    :interval "60s" 
+    "date +'%A - %d. %B'"
 )
 
 (defvar selected_network false)
@@ -64,17 +83,50 @@
     )
 )
 
+(defwindow player_window_closer
+    :monitor 0
+    :geometry (geometry :width "100%" :height "100%")
+    :stacking "bg"
+    :focusable false
+    (closer 
+        :window "player_window"
+    )
+)
+
+(defwindow player_window
+    :monitor 0
+    :geometry (geometry 
+        :x 0
+        :y 20
+        :anchor "top center"
+    )
+    :stacking "bottom"
+    (player_widget)
+)
+
+(defwindow time_window
+    :monitor 0
+    :geometry (geometry 
+        :x 0 
+        :y -45
+        :anchor "top center"
+    )
+    :stacking "bottom"
+    (clock_widget)
+)
+
 (defwidget closer [window]
     (eventbox 
         :onclick "
             eww close ${window} \
             && eww close ${window}_closer \
+            && eww update display_network_list=false \
             && eww update selected_network=false
         "
     )
 )
 
-(defwidget icon [?icon color onclick]
+(defwidget icon [icon color ?onclick]
     (button
         :orientation "horizontal"
         :class "icon"
@@ -93,6 +145,7 @@
         (icon 
             :onclick "
                 eww open network_list_window \
+                && eww update display_network_list=true \
                 && eww open network_list_window_closer
             "
             :icon "W"
@@ -196,3 +249,96 @@
     )
 )
 
+(defwidget player_widget []
+    (box 
+        :orientation "h"
+        :space-evenly false
+        :class "player"
+        (box
+            :class "album-art"
+            :style "background-image: url('${now_playing.art}')"
+        )
+        (box
+            :valign "center"
+            :orientation "v"
+            :class "info"
+            :space-evenly false
+            :spacing 2
+            :hexpand true
+            (label :halign "start" :text "${now_playing.title}")
+            (label :halign "start" :text "${now_playing.album}")
+            (label :halign "start" :text "${now_playing.artist}")
+            (box
+                :hexpand true
+                :vexpand true
+                :space-evenly false
+                :class "progress-container"
+                :orientation "v"
+                :spacing 10
+                (progress
+                    :valign "center"
+                    :hexpand true 
+                    :value "${now_playing.progress}"
+                )
+                (box
+                    :hexpand true
+                    :space-evenly false
+                    (label
+                        :halign "start"
+                        :class "small"
+                        :hexpand true
+                        :text "${now_playing.service}"
+                    )
+                    (label
+                        :halign "end"
+                        :class "small"
+                        :text "${now_playing.current_time} / ${now_playing.length}"
+                    )
+                )
+            )
+        )
+    )
+)
+
+(defwidget now_playing []
+    (box
+        :space-evenly false
+        :spacing 10
+        (button
+            :hexpand true
+            :class "album-art"
+            :style "background-image: url('${now_playing.art}')"
+            :onclick "
+                eww open player_window \
+                && eww open player_window_closer
+            "
+        )
+        (label
+            :text "${now_playing.title} - ${now_playing.artist}"
+        )
+    )
+)
+
+(defwidget date_widget [date]
+    (box
+        :vexpand true
+        (label
+            :class "date"
+            :valign "center" 
+            :text "${date}"
+        )
+    )
+)
+
+(defwidget clock_widget []
+    (box
+        :class "now-playing"
+        :space-evenly false
+        :spacing 10
+        (literal :content {now_playing.stop ? "(date_widget :date '${DATES}')" : "(now_playing)"})
+        (icon
+            :icon "${HOUR}"
+            :color "${lavender}"
+        )
+    )
+)

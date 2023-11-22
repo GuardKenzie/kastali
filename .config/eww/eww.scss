@@ -40,10 +40,15 @@ button {
 }
 
 button.icon {
-    padding: 8px 13px;
+    min-height: 40px;
+    padding: 0px 13px;
     margin: 5px;
-    margin-right: 20px;
-    
+}
+
+.active-network {
+    .icon {
+        margin-right: 20px;
+    }
 }
 
 box.active-network {
@@ -122,3 +127,47 @@ box.active-network {
     }
 }
 
+.player {
+    min-width: 500px;
+
+    .album-art {
+        min-width: 150px;
+        min-height: 150px;
+        background-size: 150px;
+        margin: 5px;
+        margin-right: 20px;
+    }
+
+    .info {
+        padding: 5px 15px;
+        padding-left: 0px;
+    }
+
+    .progress-container {
+        padding-top: 10px;
+    }
+
+    progress {
+        border-radius: 5px;
+    }
+
+    .small {
+        font-size: 80%;
+        opacity: 0.5;
+    }
+
+}
+
+.now-playing {
+
+    .album-art {
+        min-width: 40px;
+        min-height: 40px;
+        background-size: 40px;
+        margin: 5px;
+    }
+
+    .date {
+        margin-left: 15px;
+    }
+}
