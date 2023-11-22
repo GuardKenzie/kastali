@@ -15,6 +15,7 @@ def get_active_ssid():
             ssid = ":".join(entry[:-1])
             break
 
+    # return "Connected SSID"
     return ssid
 
 def get_known():
@@ -69,6 +70,12 @@ def get_available(rescan=False):
         } for key, val in networks.items()
     ]
 
+    # out = [
+    #     {"ssid": "Example SSID", "signal": 70, "security": "WPA1 WPA2", "known": False},
+    #     {"ssid": "Connected SSID", "signal": 53, "security": "WPA2", "known": True},
+    #     {"ssid": "Known SSID", "signal": 40, "security": "WPA1 WPA2", "known": True},
+    #     {"ssid": "Example SSID", "signal": 32, "security": "WPA2", "known": False},
+    # ]
     return json.dumps(out)
 
 def connect(ssid, password=None):
