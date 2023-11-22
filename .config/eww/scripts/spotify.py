@@ -9,12 +9,12 @@ import sys
 from subprocess import check_output, CalledProcessError, DEVNULL
 
 from mpd import MPDClient
+import mpd.base
 
 from hashlib import md5
 
 # MPD
-client = MPDClient()
-client.connect("localhost", 6600)
+client = None
 
 # Args
 parser = ArgumentParser()
@@ -74,11 +74,20 @@ def getArt():
     return metadata.get("mpris:artUrl")
 
 def getMPDInfo():
+    global client
+
+    if client is None:
+        client = MPDClient()
+        client.connect("localhost", 6600)
+
     status = client.status()
     song   = client.currentsong()
 
-    if status["state"] == "stop":
-        return {"stop": True}
+    if status["state"] != "play":
+        stop = True
+
+    else:
+        stop = False
 
 
     album = song["album"] if "album" in song.keys() else ""
@@ -92,7 +101,7 @@ def getMPDInfo():
             f.write(client.albumart(song["file"])["binary"])
 
     return {
-        "stop": False,
+        "stop": stop,
         "status": status["state"],
         "art": album_art,
         "title": title,
@@ -142,11 +151,17 @@ def getSpotifyInfo():
 
 def getInfo():
     global spotify_bus
+    global client
     try:
         return getSpotifyInfo()
     except dbus.exceptions.DBusException:
         spotify_bus = None
-        return getMPDInfo()
+
+        try:
+            return getMPDInfo()
+        except (mpd.base.ConnectionError, ConnectionRefusedError):
+            client = None
+            return {"stop": True}
 
 
         
