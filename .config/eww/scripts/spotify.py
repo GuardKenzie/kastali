@@ -85,6 +85,7 @@ def getMPDInfo():
 
     if status["state"] != "play":
         stop = True
+        return {"stop": True}
 
     else:
         stop = False
@@ -92,7 +93,15 @@ def getMPDInfo():
 
     album = song["album"] if "album" in song.keys() else ""
     artist = song["artist"] if "artist" in song.keys() else ""
-    title = song["title"] if "title" in song.keys() else os.path.basename(song["file"])
+
+    if "title" in song.keys():
+        title = song["title"] 
+
+    elif "file" in song.keys():
+        title = os.path.basename(song["file"])
+
+    else:
+        title = ""
 
     album_art = f"/tmp/album{md5(song['file'].encode()).hexdigest()}.jpg"
 
