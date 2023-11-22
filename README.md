@@ -7,6 +7,8 @@
 </div>
 
 ## Pictured
+- Window manager: [Hyprland](https://hyprland.org/)
+- Color scheme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 - fetch: [pfetch-with-kitties](https://github.com/andreasgrafen/pfetch-with-kitties) with [some modifications](https://github.com/GuardKenzie/pfetch-with-kitties)
 - PDF viewer: Zathura
 - Terminal: [Kitty](https://sw.kovidgoyal.net/kitty/)
@@ -15,3 +17,5 @@
 - Network and player widget: [EWW](https://github.com/elkowar/eww)
 - Workspace and control center widgets: [Waybar](https://github.com/Alexays/Waybar)
 - Website: [pokedex.mage.black](https://pokedex.mage.black)
+- Editors: [Neovim](https://neovim.io/) and [VSCode](https://code.visualstudio.com/)
+- Firefox theme: [Cascade](https://github.com/andreasgrafen/cascade)
