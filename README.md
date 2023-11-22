@@ -6,6 +6,14 @@
   <img src="https://github.com/GuardKenzie/kastali/blob/master/assets/pokemon.png?raw=true"></img>
 </div>
 
+## Widgets
+<table align="center">
+  <tr>
+    <td valign="top"><img src="https://github.com/GuardKenzie/kastali/blob/master/assets/player.gif?raw=true"></img></td>
+    <td valign="top"><img valign="top" src="https://github.com/GuardKenzie/kastali/blob/master/assets/network.gif?raw=true"></img></td>
+  </tr>
+</table>
+
 ## Pictured
 - Window manager: [Hyprland](https://hyprland.org/)
 - Color scheme: [Catppuccin](https://github.com/catppuccin/catppuccin)
