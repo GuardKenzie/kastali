@@ -4,4 +4,5 @@ PF_ASCII="Catppuccin"\
     PF_COL3=3 \
     PF_INFO="palette ascii title os uptime ip weather" \
     PF_SEP="-  " \
+    PF_WEATHER="$HOME/.dotfiles/vedur-nuna" \
     pfetch
