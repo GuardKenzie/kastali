@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='scp://kenzie@mage.black//var/www/mage.black/lofi/player/'
+let g:netrw_dirhist_7='scp://kenzie@mage.black//var/www/mage.black/lofi/'
+let g:netrw_dirhist_6='scp://kenzie@mage.black//var/www/mage.black/'
+let g:netrw_dirhist_5='scp://kenzie@mage.black//var/www/mage.black/lofi/player/js/'
+let g:netrw_dirhist_4='scp://kenzie@mage.black//var/www/mage.black/lofi/player/'
+let g:netrw_dirhist_3='scp://kenzie@mage.black//var/www/mage.black/lofi/'
+let g:netrw_dirhist_2='scp://kenzie@mage.black//var/www/mage.black/'
+let g:netrw_dirhist_1='scp://kenzie@mage.black//var/www/mage.black/nh/fonts/iconmonstr/css/'
+let g:netrw_dirhist_0='scp://kenzie@mage.black//var/www/mage.black/nh/fonts/iconmonstr/'
+let g:netrw_dirhist_9='scp://kenzie@mage.black//var/www/mage.black/nh/fonts/'

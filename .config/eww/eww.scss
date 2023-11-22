@@ -1,0 +1,124 @@
+$color-fore: #CDD6F4;
+$color-back: #1E1E2E;
+
+$color-black: #45475A;
+$color-red: #F38BA8;
+$color-green: #A6E3A1;
+$color-yellow: #F9E2AF;
+$color-blue: #89B4FA;
+$color-magenta: #F5C2E7;
+$color-cyan: #94E2D5;
+$color-white: #BAC2DE;
+
+$color-lavender: #b4befe;
+$color-peach: #fab387;
+
+* {
+    font-family: Iosevka;
+    font-size: 18px;
+}
+
+window {
+    background: transparent;
+    color: $color-fore;
+}
+
+box {
+    border-radius: 5px;
+    background-color: $color-back;
+}
+
+box box {
+    background: inherit;
+    padding: initial;
+}
+
+button {
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+}
+
+button.icon {
+    padding: 8px 13px;
+    margin: 5px;
+    margin-right: 20px;
+    
+}
+
+box.active-network {
+    padding-right: 15px;
+}
+
+.network-list {
+    padding: 15px;
+    color: $color-fore;
+
+    button {
+        padding: 8px 13px;
+        background-color: $color-back;
+        border: none;
+        outline: none;
+        color: $color-fore;
+
+        box {
+            background-color: rgba(0,0,0,0);
+            box-shadow: none;
+        }
+
+        box:active {
+            box-shadow: none;
+            background-color: rgba(0,0,0,0);
+            outline-style: none;
+            border: none;
+        }
+
+        .security {
+            font-size: 80%;
+            opacity: 0.5;
+        }
+    }
+}
+
+.connect_button:hover {
+    outline-style: none;
+    background-color: $color-back;
+}
+
+.connect_button:active {
+    outline-style: none;
+    background-color: $color-back;
+}
+
+.connect_button.known {
+    color: $color-green;
+}
+
+.connect_button.active {
+    color: $color-blue;
+}
+
+.password {
+    margin-bottom: 10px;
+
+    entry {
+        background-color: $color-back;
+        border-radius: 0px;
+        border-bottom: 2px solid $color-lavender;
+        color: $color-fore;
+    }
+
+    entry:active {
+        outline-width: 0px;
+        outline:none;
+        box-shadow: none;
+    }
+
+    entry:focus {
+        outline: none;
+        box-shadow: none;
+        outline-width: 0px;
+        outline-color: $color-back;
+    }
+}
+

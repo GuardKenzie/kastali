@@ -1,0 +1,27 @@
+partial alphanumeric_keys
+xkb_symbols "e" {
+
+  include "us(intl)"
+  name[Group2]= "English (US, alt. intl. e)";
+
+  key <TLDE> { [      grave, asciitilde,    dead_grave,       dead_tilde    ] };
+  key <AE05> { [          5, percent,	    EuroSign			    ] };
+  key <AE06> { [	  6, asciicircum,   dead_circumflex,  asciicircum   ] };
+  key <AE09> { [	  9, parenleft, leftsinglequotemark,  dead_breve ] };
+  key <AE10> { [	  0, parenright, rightsinglequotemark, dead_abovering ] };
+  key <AE11> { [      minus, underscore,    dead_macron,      dead_belowdot ] };
+  key <AE12> { [      equal, plus,	    dead_doubleacute, dead_horn	    ] };
+
+  key <AD03> { [          e, E,		     EuroSign,         cent	    ] };
+
+  key <AC10> { [  semicolon, colon,	     dead_ogonek,   dead_diaeresis  ] };
+  key <AC11> { [ dead_acute, quotedbl ,      apostrophe,    dead_diaeresis  ] };
+
+  key <AB08> { [      comma, less,	     dead_cedilla,  dead_caron	    ] };
+  key <AB09> { [     period, greater,	     dead_abovedot, dead_circumflex ] };
+  key <AB10> { [      slash, question,	     dead_hook,	    dead_hook	    ] };
+
+  key <LSGT> { [ backslash,   bar,            backslash,      bar ] };
+
+  include "level3(ralt_switch)"
+};

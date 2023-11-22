@@ -1,0 +1,82 @@
+{
+    "name": "top",
+    "modules-left": [
+        "hyprland/workspaces", 
+    ],
+    "modules-center": [
+        "clock#date", "clock#time",
+    ],
+    "modules-right": [
+        "pulseaudio#icon", "pulseaudio", 
+        "backlight#icon", "backlight", 
+        "battery#icon", "battery"
+    ],
+
+    "margin-top": 20,
+    "margin-bottom": 0,
+    "margin-left": 20,
+    "margin-right": 20,
+
+    "hyprland/window#class": {
+        "format": "{class}"
+    },
+
+    "hyprland/window#title": {
+        "format": "{title}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "$1"
+        }
+    },
+
+    "clock#date": {
+        "format": "{:%A %d. %B}"
+    },
+    "clock#time": {
+        "format": "{:%H:%M}"
+    },
+
+    "pulseaudio#icon": {
+        "format": "V",
+        "format-muted": "M",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}%",
+    },
+
+    "backlight#icon": {
+        "format": "{icon}",
+        "format-icons": ["L"]
+    },
+
+    "backlight": {
+        "format": "{percent}%",
+    },
+
+    "battery#icon": {
+        "format": "{icon}",
+        "interval": 5,
+        "format-charging": "C",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-charging-icons": [
+            "C",
+            "C",
+            "C"
+        ],
+        "format-icons": [
+            "B",
+            "B",
+            "B"
+        ]
+    },
+
+    "battery": {
+        "format": "{capacity}%",
+        "interval": 5,
+        "format-charging": "{capacity}% - {time} until full",
+    }
+}

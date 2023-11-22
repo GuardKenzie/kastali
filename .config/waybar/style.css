@@ -1,0 +1,148 @@
+@define-color fore #CDD6F4;
+@define-color back #1E1E2E;
+
+@define-color black #45475A;
+@define-color red #F38BA8;
+@define-color green #A6E3A1;
+@define-color yellow #F9E2AF;
+@define-color blue #89B4FA;
+@define-color magenta #F5C2E7;
+@define-color cyan #94E2D5;
+@define-color white #BAC2DE;
+
+@define-color lavender #b4befe;
+@define-color peach #fab387;
+
+* {
+    font-family: Iosevka;
+    font-size: 18px;
+}
+
+window {
+    padding: 10px
+}
+
+window#waybar {
+    background-color: rgba(0,0,0,0);
+}
+
+.modules-right,
+.modules-center,
+.modules-left {
+    background-color: @back;
+    border-radius: 5px;
+    color: @fore;
+}
+
+#workspaces {
+    padding: 5px;
+}
+
+
+#workspaces button.active {
+    color: @back;
+    border-radius: 5px;
+    background-color: @lavender;
+}
+
+#workspaces button {
+    color: @fore;
+}
+
+#workspaces button:hover {
+    color: @fore;
+    background: transparent;
+    background-color: transparent;
+    border-color: @back;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.active:hover {
+    color: @back;
+    background-color: @lavender;
+    border-color: @lavender;
+}
+
+#clock {
+    padding: 5px 15px;
+}
+
+#clock.time {
+    background-color: @lavender;
+    color: @back;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#pulseaudio {
+    padding: 5px 15px;
+}
+
+#pulseaudio.icon {
+    background-color: @yellow;
+    color: @back;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#pulseaudio.icon.muted {
+    background-color: @red;
+}
+
+#backlight {
+    padding: 5px 15px;
+}
+
+#backlight.icon {
+    background-color: @blue;
+    color: @back;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#battery {
+    padding: 5px 15px;
+}
+
+#battery.icon {
+    color: @back;
+    background-color: @green;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#battery.icon.warning {
+    background-color: @peach;
+}
+
+#battery.icon.critical {
+    background-color: @red;
+}
+
+#battery.icon.charging {
+    background-color: @yellow;
+    color: @back;
+}
+
+#window {
+    padding: 5px 15px;
+}
+
+window#waybar.empty #window {
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+#window.class {
+    background-color: @lavender;
+    color: @back;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#window.class.empty {
+    padding: 0px;
+    background-color: @red;
+}

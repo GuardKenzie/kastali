@@ -1,0 +1,4 @@
+#!/bin/sh
+file=$(grimshot save anything)
+
+notify-send -i $file "Screenshot captured!" $file

@@ -1,0 +1,15 @@
+{
+  "barbecue": { "branch": "main", "commit": "d60fb8d8e240e5be04a20636f5b35b05a0d4712c" },
+  "jedi-vim": { "branch": "master", "commit": "be483a2dcb63e992b02c5a0faff5d555720246fc" },
+  "lazy.nvim": { "branch": "main", "commit": "887eb75591520a01548134c4623617b639289d0b" },
+  "nvim-lspconfig": { "branch": "master", "commit": "736c39e4bab977f0171c78328415c6402c58e64a" },
+  "nvim-navic": { "branch": "master", "commit": "f1ffbc3f5736add66c31e02f4c53d238e040600b" },
+  "nvim-web-devicons": { "branch": "master", "commit": "467d135bbefa6fbe8380c8b6498228f8b21244a6" },
+  "tokyonight.nvim": { "branch": "main", "commit": "edffa82026914be54c8220973b0385f61d3392f0" },
+  "vim-autoclose": { "branch": "master", "commit": "a9a3b7384657bc1f60a963fd6c08c63fc48d61c3" },
+  "vim-commentary": { "branch": "master", "commit": "e87cd90dc09c2a203e13af9704bd0ef79303d755" },
+  "vim-latex": { "branch": "master", "commit": "5987380b4ff4c960c99c02df1d379a639ac461a7" },
+  "vim-polyglot": { "branch": "master", "commit": "bc8a81d3592dab86334f27d1d43c080ebf680d42" },
+  "vim-template": { "branch": "master", "commit": "0bf607233719a0ed6e14bf0197ba8950bf8833fc" },
+  "winbar.nvim": { "branch": "main", "commit": "13739fdb31be51a1000486189662596f07a59a31" }
+}

@@ -1,0 +1,198 @@
+(defvar fore "#CDD6F4")
+(defvar back "#1E1E2E")
+
+(defvar black1  "#45475A")
+(defvar black2  "#585B70")
+(defvar red     "#F38BA8")
+(defvar green   "#A6E3A1")
+(defvar yellow  "#F9E2AF")
+(defvar blue    "#89B4FA")
+(defvar magenta "#F5C2E7")
+(defvar cyan    "#94E2D5")
+(defvar white   "#BAC2DE")
+
+(defvar display_network_list false)
+
+(defvar networkpy "~/.config/eww/scripts/network.py")
+
+(defpoll active_network 
+    :interval "1s" 
+    "~/.config/eww/scripts/network.py active"
+)
+
+(defpoll available_networks
+    :interval "5s" 
+    "~/.config/eww/scripts/network.py list"
+)
+
+(defvar selected_network false)
+
+(defwindow network_window
+    :monitor 0
+    :geometry (geometry 
+        :x "20px"
+        :y "20px"
+        :width "0"
+        :height "0"
+        :anchor "bottom right"
+    )
+    :stacking "bottom"
+    :windowtype "dock"
+    :wm-ignore false
+    (network_widget)
+)
+
+(defwindow network_list_window
+    :monitor 0
+    :geometry (geometry 
+        :x "20px" 
+        :y "90px" 
+        :anchor "bottom right"
+    )
+    :focusable true
+    :stacking "bottom"
+    (network_list_widget)
+)
+
+(defwindow network_list_window_closer
+    :monitor 0
+    :geometry (geometry :width "100%" :height "100%")
+    :stacking "bg"
+    :focusable false
+    (closer 
+        :window "network_list_window"
+    )
+)
+
+(defwidget closer [window]
+    (eventbox 
+        :onclick "
+            eww close ${window} \
+            && eww close ${window}_closer \
+            && eww update selected_network=false
+        "
+    )
+)
+
+(defwidget icon [?icon color onclick]
+    (button
+        :orientation "horizontal"
+        :class "icon"
+        :onclick onclick
+        :style "background-color: ${color}; color: ${back}"
+        icon
+    )
+)
+
+(defwidget network_widget []
+     (box 
+        :orientation "h"
+        :space-evenly false
+        :hexpand true
+        :class "active-network"
+        (icon 
+            :onclick "
+                eww open network_list_window \
+                && eww open network_list_window_closer
+            "
+            :icon "W"
+            :color {active_network == "None" ? red : blue}
+            :halign "start"
+        ) 
+        (label 
+            :text {
+                active_network == "None" 
+                    ? "Not connected" 
+                    : "${active_network}"
+            }
+        )
+    )
+)
+
+(defwidget password_input [?ssid]
+    (box
+        :orientation "v"
+        :class "password"
+        :hexpand true
+        :space-evenly false
+        (label 
+            :hexpand true 
+            :text "Password"
+            :halign "start"
+        )
+        (input  
+            :hexpand true 
+            :password false
+            :onaccept "${networkpy} --close connect '${ssid}' --password '{}' &"
+        )
+    )
+)
+
+(defwidget connect_button [ssid security known ?signal]
+    (button
+        :hexpand true
+        :class {
+            ssid == active_network 
+                ? "connect_button active" 
+                : known 
+                    ? "connect_button known" 
+                    : "connect_button"
+        }
+        :onclick {
+            known 
+                ? "${networkpy} --close connect '${ssid}' & "
+                : "eww update 'selected_network=${ssid}'"
+        }
+        (box 
+            :space-evenly false 
+            :orientation "v"
+            (label 
+                :halign "start" 
+                :text "${ssid}"
+            )
+            (box 
+                :class "security" 
+                :space-evenly false 
+                (label 
+                    :halign "start"  
+                    :text "${security}"
+                )
+                (label 
+                    :hexpand true 
+                    :halign "end"  
+                    :text "S: ${signal}"
+                )
+            )
+        )
+    )
+)
+
+(defwidget network_list_widget []
+    (box
+        :orientation "v"
+        :space-evenly false 
+        :halign "end"
+        :valign "end"
+        :class "network-list"
+        (revealer 
+            :reveal {selected_network != false ? true : false}
+            :transition "slideup"
+            (password_input :ssid selected_network)
+        )
+        (box
+            :orientation "v" 
+            :space-evenly true 
+            :spacing 10
+                (for entry in available_networks
+                (connect_button 
+                    :hexpand true
+                    :ssid "${entry.ssid}" 
+                    :security "${entry.security}" 
+                    :known {entry.known ? true : false}
+                    :signal "${entry.signal}"
+                )
+            )
+        )
+    )
+)
+
