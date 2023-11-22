@@ -7,6 +7,7 @@
 </div>
 
 ## Pictured
+- Window manager: [Hyprland](https://hyprland.org/)
 - fetch: [pfetch-with-kitties](https://github.com/andreasgrafen/pfetch-with-kitties) with [some modifications](https://github.com/GuardKenzie/pfetch-with-kitties)
 - PDF viewer: Zathura
 - Terminal: [Kitty](https://sw.kovidgoyal.net/kitty/)
