@@ -6,6 +6,7 @@ import math
 import os
 import time
 import sys
+from subprocess import check_output, CalledProcessError, DEVNULL
 
 from mpd import MPDClient
 
@@ -24,11 +25,49 @@ subparsers.add_parser("art")
 info_parser = subparsers.add_parser("info")
 info_parser.add_argument("--monitor", action="store_true")
 
+info_parser = subparsers.add_parser("time")
+info_parser.add_argument("--monitor", action="store_true")
 
 args = parser.parse_args()
 
 # Spotify
 session_bus = dbus.SessionBus()
+
+def getTime():
+    playerctl_length   = ["playerctl", "metadata", "-f", "{{mpris:length}}"]
+    playerctl_position = ["playerctl", "position"]
+
+    mpc = ["mpc", "status", "'%totaltime%',%currenttime%,%percenttime%'"]
+
+    try:
+        length   = float(check_output(playerctl_length, stderr=DEVNULL).decode())
+        position = float(check_output(playerctl_position, stderr=DEVNULL).decode())
+
+        length /= 1_000_000
+
+        percent = int(100 * position / length)
+
+        length = f"{int(length // 60)}:{int(length % 60):02d}"
+        position = f"{int(position // 60)}:{int(position % 60):02d}"
+
+
+    except (ValueError, CalledProcessError, ZeroDivisionError):
+        try:
+            length, position, pct = check_output(mpc, stderr=DEVNULL).decode().split(",")
+            length = length.replace("'","")
+            percent = int(pct.replace(" ", "0")[:-3])
+
+        except (ValueError, CalledProcessError):
+            length = position = "0:00"
+            percent = 0
+
+
+    return {
+        "length": length, 
+        "position": position, 
+        "percent": percent
+    }
+
 
 
 def getArt():
@@ -42,17 +81,6 @@ def getMPDInfo():
         return {"stop": True}
 
 
-    current_time = float(status["elapsed"])
-    track_length = float(status["duration"])
-
-    position = 100 * current_time / track_length
-
-    current_time_seconds = math.floor(current_time % 60)
-    current_time_minutes = math.floor(current_time // 60)
-
-    track_length_seconds = math.floor(track_length % 60)
-    track_length_minutes = math.floor(track_length // 60)
-
     album = song["album"] if "album" in song.keys() else ""
     artist = song["artist"] if "artist" in song.keys() else ""
     title = song["title"] if "title" in song.keys() else os.path.basename(song["file"])
@@ -65,13 +93,11 @@ def getMPDInfo():
 
     return {
         "stop": False,
+        "status": status["state"],
         "art": album_art,
         "title": title,
         "album": album,
         "artist": artist,
-        "progress": position,
-        "current_time": f"{current_time_minutes}:{current_time_seconds:02d}",
-        "length": f"{track_length_minutes}:{track_length_seconds:02d}",
         "service": "MPD"
     }
 
@@ -98,34 +124,24 @@ def getSpotifyInfo():
         "org.mpris.MediaPlayer2.Player", 
         "Metadata"
     )
-
-    current_time = spotify_properties.Get("org.mpris.MediaPlayer2.Player", "Position")
-    track_length = metadata.get("mpris:length")
-    position = 100 * current_time / track_length
-
-    current_time /= 1_000_000
-    track_length /= 1_000_000
-
-    current_time_seconds = math.floor(current_time % 60)
-    current_time_minutes = math.floor(current_time // 60)
-
-    track_length_seconds = math.floor(track_length % 60)
-    track_length_minutes = math.floor(track_length // 60)
+    play = spotify_properties.Get(
+        "org.mpris.MediaPlayer2.Player", 
+        "PlaybackStatus"
+    )
 
     return {
-        "stop": False,
+        "stop": play == "Paused",
+        "state": play.lower(),
         "art": metadata.get("mpris:artUrl"),
         "title": metadata.get("xesam:title"),
         "album": metadata.get("xesam:album"),
         "artist": ", ".join(metadata.get("xesam:artist")),
-        "progress": position,
-        "current_time": f"{current_time_minutes}:{current_time_seconds:02d}",
-        "length": f"{track_length_minutes}:{track_length_seconds:02d}",
         "service": "Spotify"
     }
 
 
 def getInfo():
+    global spotify_bus
     try:
         return getSpotifyInfo()
     except dbus.exceptions.DBusException:
@@ -144,14 +160,35 @@ elif args.action == "info":
         while True:
             new_info = getInfo()
 
-            if new_info != info:
+            if info != new_info:
                 sys.stdout.write(json.dumps(new_info).strip())
+                sys.stdout.write("\n")
                 sys.stdout.flush()
                 info = new_info
 
-            time.sleep(1)
-            sys.stdout.write("\n")
+            time.sleep(2)
+
 
     else:
         res = getInfo()
+        print(json.dumps(res))
+
+elif args.action == "time":
+    if args.monitor:
+        old_time = None
+
+        while True:
+            new_time = getTime()
+
+            if old_time != new_time:
+                sys.stdout.write(json.dumps(new_time).strip())
+                sys.stdout.write("\n")
+                sys.stdout.flush()
+                old_time = new_time
+
+            time.sleep(0.1)
+
+
+    else:
+        res = getTime()
         print(json.dumps(res))

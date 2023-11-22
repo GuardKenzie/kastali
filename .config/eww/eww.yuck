@@ -14,6 +14,7 @@
 (defvar lavender   "#B4BEFE")
 
 (defvar display_network_list false)
+(defvar display_player false)
 
 (defvar networkpy "~/.config/eww/scripts/network.py")
 
@@ -31,6 +32,10 @@
 (deflisten now_playing
     :initial "{\"stop\": true}"
     "~/.config/eww/scripts/spotify.py info --monitor"
+)
+
+(deflisten player_time
+    "~/.config/eww/scripts/spotify.py time --monitor"
 )
 
 
@@ -121,6 +126,7 @@
             eww close ${window} \
             && eww close ${window}_closer \
             && eww update display_network_list=false \
+            && eww update display_player=false \
             && eww update selected_network=false
         "
     )
@@ -278,7 +284,7 @@
                 (progress
                     :valign "center"
                     :hexpand true 
-                    :value "${now_playing.progress}"
+                    :value "${player_time.percent}"
                 )
                 (box
                     :hexpand true
@@ -292,7 +298,7 @@
                     (label
                         :halign "end"
                         :class "small"
-                        :text "${now_playing.current_time} / ${now_playing.length}"
+                        :text "${player_time.position} / ${player_time.length}"
                     )
                 )
             )
@@ -310,7 +316,8 @@
             :style "background-image: url('${now_playing.art}')"
             :onclick "
                 eww open player_window \
-                && eww open player_window_closer
+                && eww open player_window_closer \
+                && eww update display_player=true
             "
         )
         (label
@@ -335,7 +342,7 @@
         :class "now-playing"
         :space-evenly false
         :spacing 10
-        (literal :content {now_playing.stop ? "(date_widget :date '${DATES}')" : "(now_playing)"})
+        (literal :content {now_playing.stop || display_player ? "(date_widget :date '${DATES}')" : "(now_playing)"})
         (icon
             :icon "${HOUR}"
             :color "${lavender}"
