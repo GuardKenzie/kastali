@@ -27,3 +27,9 @@
 - Website: [pokedex.mage.black](https://pokedex.mage.black)
 - Editors: [Neovim](https://neovim.io/) and [VSCode](https://code.visualstudio.com/)
 - Firefox theme: [Cascade](https://github.com/andreasgrafen/cascade)
+
+## Requires
+- `nmcli`
+- `playerctl`
+- `mpc`
+- [`python-mpd2`](https://python-mpd2.readthedocs.io/)
