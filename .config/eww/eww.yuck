@@ -41,7 +41,7 @@
 
 (defpoll HOUR 
     :interval "5s" 
-    "date +'%I:%M'"
+    "date +'%R'"
 )
 
 (defpoll DATES
